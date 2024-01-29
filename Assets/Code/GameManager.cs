@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public PlayerInputActions playerInputActions;
 
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
+            playerInputActions = new PlayerInputActions();
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -29,5 +31,15 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnEnable()
+    {
+        playerInputActions.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInputActions.Disable();
     }
 }
