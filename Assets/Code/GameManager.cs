@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    public PlayerInputActions playerInputActions;
-
     public static GameManager Instance { get; private set; }
 
     private void Awake()
@@ -14,7 +11,6 @@ public class GameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            playerInputActions = new PlayerInputActions();
             DontDestroyOnLoad(gameObject);
         }
         else
