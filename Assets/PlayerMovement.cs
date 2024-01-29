@@ -7,12 +7,13 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameObject mainCamera;
     [SerializeField] float moveSpeed = 10f;
-    public bool FPSMode;
+    private bool FPSMode;
 
     private Vector3 moveDirection;
     private Rigidbody rb;
     private Vector2 movementVector;
     private PlayerInputActions playerInputActions;
+    private Quaternion startingRotation;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        startingRotation = transform.rotation;
         playerInputActions = GameManager.Instance.playerInputActions;
         rb = GetComponent<Rigidbody>();
 
@@ -51,6 +53,12 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.AddForce(moveDirection * moveSpeed);
+    }
+
+    public void SetFPSMode(bool value)
+    {
+        FPSMode = value;
+        transform.rotation = startingRotation;
     }
 
 }
