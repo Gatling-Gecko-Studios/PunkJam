@@ -44,16 +44,19 @@ public class CameraController : MonoBehaviour
                 Debug.Log("changed to ortho");
                 transform.parent = null;
                 FPSMode = false;
+                player.GetComponent<PlayerMovement>().SetFPSMode(false);
                 transform.position = managementCameraPosition;
                 transform.rotation = managementCameraRotation;
                 mainCamera.orthographic = true;
                 Cursor.lockState = CursorLockMode.None;
+
 
 }
             else
             {
                 Debug.Log("changed to perspective");
                 FPSMode = true;
+                player.GetComponent<PlayerMovement>().SetFPSMode(true);
                 mainCamera.orthographic = false;
                 transform.position = FPSCameraPoint.position;
                 transform.parent = FPSCameraPoint;
