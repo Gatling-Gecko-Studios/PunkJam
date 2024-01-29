@@ -44,6 +44,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TogglePerspective"",
+                    ""type"": ""Button"",
+                    ""id"": ""e5c507dd-8a47-45d9-af8a-156f8e73590f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +121,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7ca79732-f2f4-4d2c-a82f-55098709854a"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TogglePerspective"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -120,24 +140,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ""id"": ""c7df5e17-e142-4033-8640-b25327a0ff52"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
+                    ""name"": ""Look"",
+                    ""type"": ""Value"",
                     ""id"": ""0412d935-eefc-4d5e-94c3-c69bdc83b5b7"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
                 {
                     ""name"": """",
                     ""id"": ""d728fb82-f5e9-44be-8394-c0a773ab91ae"",
-                    ""path"": """",
+                    ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -206,9 +226,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Day = asset.FindActionMap("Day", throwIfNotFound: true);
         m_Day_Move = m_Day.FindAction("Move", throwIfNotFound: true);
         m_Day_Interact = m_Day.FindAction("Interact", throwIfNotFound: true);
+        m_Day_TogglePerspective = m_Day.FindAction("TogglePerspective", throwIfNotFound: true);
         // Night
         m_Night = asset.FindActionMap("Night", throwIfNotFound: true);
-        m_Night_Newaction = m_Night.FindAction("New action", throwIfNotFound: true);
+        m_Night_Look = m_Night.FindAction("Look", throwIfNotFound: true);
         // InGameUI
         m_InGameUI = asset.FindActionMap("InGameUI", throwIfNotFound: true);
         m_InGameUI_Newaction = m_InGameUI.FindAction("New action", throwIfNotFound: true);
@@ -278,12 +299,14 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IDayActions> m_DayActionsCallbackInterfaces = new List<IDayActions>();
     private readonly InputAction m_Day_Move;
     private readonly InputAction m_Day_Interact;
+    private readonly InputAction m_Day_TogglePerspective;
     public struct DayActions
     {
         private @PlayerInputActions m_Wrapper;
         public DayActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Day_Move;
         public InputAction @Interact => m_Wrapper.m_Day_Interact;
+        public InputAction @TogglePerspective => m_Wrapper.m_Day_TogglePerspective;
         public InputActionMap Get() { return m_Wrapper.m_Day; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -299,6 +322,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @TogglePerspective.started += instance.OnTogglePerspective;
+            @TogglePerspective.performed += instance.OnTogglePerspective;
+            @TogglePerspective.canceled += instance.OnTogglePerspective;
         }
 
         private void UnregisterCallbacks(IDayActions instance)
@@ -309,6 +335,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @TogglePerspective.started -= instance.OnTogglePerspective;
+            @TogglePerspective.performed -= instance.OnTogglePerspective;
+            @TogglePerspective.canceled -= instance.OnTogglePerspective;
         }
 
         public void RemoveCallbacks(IDayActions instance)
@@ -330,12 +359,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     // Night
     private readonly InputActionMap m_Night;
     private List<INightActions> m_NightActionsCallbackInterfaces = new List<INightActions>();
-    private readonly InputAction m_Night_Newaction;
+    private readonly InputAction m_Night_Look;
     public struct NightActions
     {
         private @PlayerInputActions m_Wrapper;
         public NightActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Night_Newaction;
+        public InputAction @Look => m_Wrapper.m_Night_Look;
         public InputActionMap Get() { return m_Wrapper.m_Night; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,16 +374,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_NightActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_NightActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(INightActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(INightActions instance)
@@ -468,10 +497,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnTogglePerspective(InputAction.CallbackContext context);
     }
     public interface INightActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
     public interface IInGameUIActions
     {
