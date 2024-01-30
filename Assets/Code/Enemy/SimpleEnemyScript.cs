@@ -126,11 +126,11 @@ public class SimpleEnemyScript : MonoBehaviour
         canAttack = true;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 direction)
     {
         if (health - damage <= 0)
         {
-            Die();
+            Die(direction);
         }
         else
         {
@@ -138,7 +138,7 @@ public class SimpleEnemyScript : MonoBehaviour
         }
     }
 
-    private void Die()
+    private void Die(Vector3 direction)
     {
         health = 0;
         audioSource.PlayOneShot(deathClip);

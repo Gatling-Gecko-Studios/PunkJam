@@ -99,7 +99,7 @@ public class Gun : MonoBehaviour
             if(hit.collider.gameObject.TryGetComponent(out SimpleEnemyScript enemyScript))
             {
                 Debug.Log("Deal damage");
-                enemyScript.TakeDamage(shotDamage);
+                enemyScript.TakeDamage(shotDamage, mainCamera.transform.forward);
             }
         }
     }
@@ -122,7 +122,6 @@ public class Gun : MonoBehaviour
         // Calculate the rotation speed based on the duration
         float rotationSpeed = rotationAmount / rotationDuration;
 
-        //TODO: play sound
         mainAudioSource.PlayOneShot(reloadAudioClip);
 
         // Start rotating the weaponHolder around the random axis
