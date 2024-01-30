@@ -188,64 +188,6 @@ public class DayUI : MonoBehaviour
 
     private void CheckHour()
     {
-        if(hour == 1)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 2)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 3)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 4)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 5)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 6)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 7)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 8)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 9)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 10)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 11)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
-
-        if (hour == 12)
-        {
-            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
-        }
+        clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + GameManager.Instance.hour + "white");
     }
 }
