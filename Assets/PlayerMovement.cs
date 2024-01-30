@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         movementVector = playerInputActions.Day.Move.ReadValue<Vector2>();
 
-        moveDirection = transform.forward * -movementVector.x + transform.right * movementVector.y;
+        moveDirection = transform.forward * movementVector.y + transform.right * movementVector.x;
     }
 
     private void Move()
@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     public void SetFPSMode(bool value)
     {
         FPSMode = value;
-        transform.rotation = startingRotation;
+        //transform.rotation = startingRotation;
     }
 
 }
