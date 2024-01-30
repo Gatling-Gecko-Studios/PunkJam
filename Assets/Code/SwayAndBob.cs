@@ -115,5 +115,10 @@ namespace Code.Scripts.Player
             bobEulerRotation.z = (walkInput != Vector2.zero ? multiplier.z * curveCos * walkInput.x : 0);
         }
 
+        public void StartGunRecoil(float offset) //should be negative, -1 is quite a lot of recoil
+        {
+            transform.localPosition = new Vector3(0f, 0f, offset);
+        }
+
     }
 }

@@ -5,6 +5,7 @@ using static UnityEngine.Rendering.DebugUI;
 
 public class GameManager : MonoBehaviour
 {
+    GameObject player;
     public static GameManager Instance { get; private set; }
     [SerializeField] GameObject weaponHolder;
     public PlayerInputActions playerInputActions;
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         ToggleWeaponHolder(false); //disable weaponholder on start
     }
 
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour
         if (weaponHolder != null)
         {
             weaponHolder.SetActive(value);
+            player.GetComponent<Renderer>().enabled = !value;
         }
         else
         {

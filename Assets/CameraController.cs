@@ -10,7 +10,7 @@ public class CameraController : MonoBehaviour
     private Camera mainCamera;
     private Vector3 managementCameraPosition;
     private Quaternion managementCameraRotation;
-    [SerializeField] Transform FPSCameraPoint;
+    public Transform FPSCameraPoint;
     [SerializeField] float sens = 2f;
     private PlayerInputActions playerInputActions;
     public bool FPSMode;
@@ -76,16 +76,6 @@ public class CameraController : MonoBehaviour
         // Get the mouse input from the Input Actions
         Vector2 mouseDelta= playerInputActions.Night.Look.ReadValue<Vector2>();
         RotatePlayer(mouseDelta);
-
-        // Calculate the camera rotation
-        //xRotation -= mouseInput.y * sens;
-        //xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f); // Clamp to prevent over-rotation
-
-        //yRotation += mouseInput.x * sens;
-
-        //// Apply rotation to the orientation and the camera
-        //player.transform.rotation = Quaternion.Euler(0.0f, yRotation, 0f);
-        //transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
     }
 
     private void RotatePlayer(Vector2 mouseDelta)
