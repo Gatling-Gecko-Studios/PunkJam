@@ -99,7 +99,7 @@ public class Gun : MonoBehaviour
             if(hit.collider.gameObject.TryGetComponent(out SimpleEnemyScript enemyScript))
             {
                 Debug.Log("Deal damage");
-                enemyScript.TakeDamage(shotDamage, mainCamera.transform.forward);
+                enemyScript.TakeDamage(shotDamage);
             }
 
             if(hit.collider.gameObject.TryGetComponent(out Rigidbody enemyRb))
