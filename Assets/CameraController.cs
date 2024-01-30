@@ -43,11 +43,11 @@ public class CameraController : MonoBehaviour
             Debug.Log("Change perspective!");
             xRotation = 0.0f;
             yRotation = 0.0f;
-            if (FPSMode)
+            if (GameManager.Instance.FPSMode)
             {
                 Debug.Log("changed to ortho");
                 FPSMode = false;
-                player.GetComponent<PlayerMovement>().SetFPSMode(false);
+                GameManager.Instance.FPSMode = false;
                 transform.position = managementCameraPosition;
                 transform.rotation = managementCameraRotation;
                 mainCamera.orthographic = true;
@@ -59,7 +59,7 @@ public class CameraController : MonoBehaviour
             {
                 Debug.Log("changed to perspective");
                 FPSMode = true;
-                player.GetComponent<PlayerMovement>().SetFPSMode(true);
+                GameManager.Instance.FPSMode = true;
                 mainCamera.orthographic = false;
                 transform.position = FPSCameraPoint.position;
                 //transform.rotation = Quaternion.LookRotation(FPSCameraPoint.forward); 
@@ -69,7 +69,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        if (FPSMode)
+        if (GameManager.Instance.FPSMode)
         {
             transform.position = FPSCameraPoint.position;
             Look();

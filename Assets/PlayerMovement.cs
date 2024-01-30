@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] GameObject mainCamera;
     [SerializeField] float moveSpeed = 10f;
-    private bool FPSMode;
+    [SerializeField] Transform topDownMovementOrientationRefference;
 
     private Vector3 moveDirection;
     private Rigidbody rb;
@@ -45,9 +45,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void MoveInput()
     {
-        movementVector = playerInputActions.Day.Move.ReadValue<Vector2>();
-
-        moveDirection = transform.forward * movementVector.y + transform.right * movementVector.x;
+        // Check if the player is in first-person mode
+        if (GameManager.Instance.FPSMode)
+        {
+            // Read movement input relative to the player's forward and right directions
+            movementVector = playerInputActions.Day.Move.ReadValue<Vector2>();
+            moveDirection = transform.forward * movementVector.y + transform.right * movementVector.x;
+        }
+        else
+        {
+            // Read movement input in world space directions
+            movementVector = playerInputActions.Day.Move.ReadValue<Vector2>();
+            // In top-down mode, up corresponds to north, so we use world space directions
+            moveDirection = topDownMovementOrientationRefference.forward * movementVector.y + topDownMovementOrientationRefference.right * movementVector.x;
+        }
     }
 
     private void Move()
@@ -55,10 +66,5 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(moveDirection * moveSpeed);
     }
 
-    public void SetFPSMode(bool value)
-    {
-        FPSMode = value;
-        //transform.rotation = startingRotation;
-    }
 
 }
