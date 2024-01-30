@@ -84,6 +84,12 @@ public class GameManager : MonoBehaviour
     private void TransitionToFPS()
     {
         mainCamera.GetComponent<CameraController>().ChangeToFPS();
+        
+        foreach(SpawnEnemyScript spawnScript in FindObjectsByType<SpawnEnemyScript>(FindObjectsSortMode.None))
+        {
+            Debug.Log("enabled a spawn script");
+            spawnScript.enabled = true;
+        }
     }
 
     private IEnumerator TransitionInSeconds(float seconds)
