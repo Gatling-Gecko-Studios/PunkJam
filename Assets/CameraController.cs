@@ -10,13 +10,10 @@ public class CameraController : MonoBehaviour
     private Camera mainCamera;
     private Vector3 managementCameraPosition;
     private Quaternion managementCameraRotation;
-    [SerializeField] Transform FPSCameraPoint;
+    public Transform FPSCameraPoint;
     [SerializeField] float sens = 2f;
     private PlayerInputActions playerInputActions;
     public bool FPSMode;
-
-    private float xRotation = 0.0f;
-    private float yRotation = 0.0f;
     private float currentXRotation = 0f;
 
     private float minYRotation = -90f;
@@ -41,13 +38,11 @@ public class CameraController : MonoBehaviour
         if (playerInputActions.Day.TogglePerspective.triggered)
         {
             Debug.Log("Change perspective!");
-            xRotation = 0.0f;
-            yRotation = 0.0f;
-            if (GameManager.Instance.FPSMode)
+            if (GameManager.Instance.GetFPSMode())
             {
                 Debug.Log("changed to ortho");
                 FPSMode = false;
-                GameManager.Instance.FPSMode = false;
+                GameManager.Instance.SetFPSMode(false);
                 transform.position = managementCameraPosition;
                 transform.rotation = managementCameraRotation;
                 mainCamera.orthographic = true;
@@ -59,17 +54,17 @@ public class CameraController : MonoBehaviour
             {
                 Debug.Log("changed to perspective");
                 FPSMode = true;
-                GameManager.Instance.FPSMode = true;
+                GameManager.Instance.SetFPSMode(true);
                 mainCamera.orthographic = false;
                 transform.position = FPSCameraPoint.position;
-                //transform.rotation = Quaternion.LookRotation(FPSCameraPoint.forward); 
+                transform.rotation = Quaternion.LookRotation(FPSCameraPoint.forward); 
 
                 Cursor.lockState = CursorLockMode.Locked;
 
             }
         }
 
-        if (GameManager.Instance.FPSMode)
+        if (GameManager.Instance.GetFPSMode())
         {
             transform.position = FPSCameraPoint.position;
             Look();
@@ -81,16 +76,6 @@ public class CameraController : MonoBehaviour
         // Get the mouse input from the Input Actions
         Vector2 mouseDelta= playerInputActions.Night.Look.ReadValue<Vector2>();
         RotatePlayer(mouseDelta);
-
-        // Calculate the camera rotation
-        //xRotation -= mouseInput.y * sens;
-        //xRotation = Mathf.Clamp(xRotation, -90.0f, 90.0f); // Clamp to prevent over-rotation
-
-        //yRotation += mouseInput.x * sens;
-
-        //// Apply rotation to the orientation and the camera
-        //player.transform.rotation = Quaternion.Euler(0.0f, yRotation, 0f);
-        //transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
     }
 
     private void RotatePlayer(Vector2 mouseDelta)
