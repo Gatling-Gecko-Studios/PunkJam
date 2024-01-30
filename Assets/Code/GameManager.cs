@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
+        timer += Time.deltaTime * 2;
         TranslateTimeToHour();
     }
 
@@ -64,10 +64,12 @@ public class GameManager : MonoBehaviour
         if(dayCounter == 1)
         {
             Instantiate(transition1, transitionSpawnPoint);
+            dayUI.GetComponent<DayUI>().dayOne = true;
         }
         if (dayCounter == 2)
         {
             Instantiate(transition2, transitionSpawnPoint);
+            dayUI.GetComponent<DayUI>().dayTwo = true;
         }
         if (dayCounter == 3)
         {
