@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -91,6 +92,7 @@ public class NewBehaviourScript : MonoBehaviour
             if(Physics.Raycast(new Vector3(transform.position.x, 1, transform.position.z), transform.forward, out hit))
             {
                 //insert damage code here
+                //TODO: check for player layer specifically to avoid damaging other zombies
                 Debug.Log("Hit object: " + hit.transform.gameObject.name + " for " + damage + " damage.");
             }
         }
