@@ -12,7 +12,7 @@ public enum States
     death
 }
 
-public class NewBehaviourScript : MonoBehaviour
+public class SimpleEnemyScript : MonoBehaviour
 {
     [Header("Navigation")]
     private States currentState;
