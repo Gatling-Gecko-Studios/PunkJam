@@ -52,23 +52,29 @@ public class CameraController : MonoBehaviour
 }
             else
             {
-                Debug.Log("changed to perspective");
-                FPSMode = true;
-                GameManager.Instance.SetFPSMode(true);
-                mainCamera.orthographic = false;
-                transform.position = FPSCameraPoint.position;
-                transform.rotation = Quaternion.LookRotation(FPSCameraPoint.forward); 
-
-                Cursor.lockState = CursorLockMode.Locked;
-
+                ChangeToFPS();
             }
         }
+
 
         if (GameManager.Instance.GetFPSMode())
         {
             transform.position = FPSCameraPoint.position;
             Look();
         }
+    }
+
+
+    public void ChangeToFPS()
+    {
+        Debug.Log("changed to perspective");
+        FPSMode = true;
+        GameManager.Instance.SetFPSMode(true);
+        mainCamera.orthographic = false;
+        transform.position = FPSCameraPoint.position;
+        transform.rotation = Quaternion.LookRotation(FPSCameraPoint.forward);
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Look()
