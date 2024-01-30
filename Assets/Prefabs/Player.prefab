@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1365605915489691509}
   - component: {fileID: 5682357180057504126}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: FrontFacingCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 4548523435973189363}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.66}
-  m_LocalScale: {x: 0.55806, y: 0.55806, z: 1.8769232}
+  m_LocalPosition: {x: -0, y: 0, z: 0.404}
+  m_LocalScale: {x: 0.27842173, y: 0.25073078, z: 0.34754932}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5573829622469087975}
@@ -105,6 +105,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &6521602481320757908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8755365336700342168}
+  m_Layer: 0
+  m_Name: PlayerPOVPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8755365336700342168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6521602481320757908}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.562, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5573829622469087975}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6746761546275353844
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +150,7 @@ GameObject:
   - component: {fileID: 2654626603388537069}
   - component: {fileID: 3299543393263338288}
   - component: {fileID: 1819052833621762240}
+  - component: {fileID: 8938694612851353778}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -140,6 +172,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7488309023900932036}
+  - {fileID: 8755365336700342168}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!33 &5393158389424956160
@@ -258,3 +291,16 @@ MonoBehaviour:
   moveSpeed: 50
   topDownMovementOrientationRefference: {fileID: 0}
   rotationSpeed: 30
+--- !u!114 &8938694612851353778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6746761546275353844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5432c56698d4cf4ab021a200168f669, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 100
