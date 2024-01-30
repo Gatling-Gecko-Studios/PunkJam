@@ -62,6 +62,7 @@ public class MoneyManager : MonoBehaviour
 
     public void AddMoney(float amount)
     {
+        FindObjectOfType<PointTextManager>().GetComponent<PointTextManager>().PlayPopup(amount);
         currentMoney += amount;
     }
 

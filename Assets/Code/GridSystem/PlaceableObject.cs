@@ -52,6 +52,7 @@ namespace Code.GridSystem
             Destroy(drag);
             Placed = true;
             _moneyManager.UpdateGraveCount();
+            GameObject.FindObjectOfType<DayAudioManager>().PlayPlaceObjectSound();
             //doe dingen als placed
         }
     }

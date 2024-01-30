@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/KoenGame.unity
+    guid: eaa3879e02157f4408d2427a09cc179c
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 29e90f3d5342b13489aca793d1d385bb
   m_configObjects: {}
