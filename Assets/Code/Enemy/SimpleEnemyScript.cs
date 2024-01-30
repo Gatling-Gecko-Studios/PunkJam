@@ -18,7 +18,7 @@ public class NewBehaviourScript : MonoBehaviour
     private States currentState;
     public States startState;
     private NavMeshAgent agent;
-    public GameObject target;
+    private GameObject target;
     public float movementSpeed;
 
     [Header("CoolTastic Values")]
@@ -36,6 +36,7 @@ public class NewBehaviourScript : MonoBehaviour
         currentState = startState;
         agent.speed = movementSpeed;
         agent.stoppingDistance = attackRange;
+        target = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
