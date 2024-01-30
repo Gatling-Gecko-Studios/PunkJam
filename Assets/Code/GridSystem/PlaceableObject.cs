@@ -32,5 +32,25 @@ namespace Code.GridSystem
                 Math.Abs((vertices[0] - vertices[3]).y),
                 1);
         }
+
+        public Vector3 GetStartPosition()
+        {
+            return transform.TransformPoint(Vertices[0]);
+        }
+
+        private void Start()
+        {
+            GetColliderVertexPositionsLocal();
+            CalculateSizeInCells();
+        }
+
+        public virtual void Place()
+        {
+            ObjectDrag drag = gameObject.GetComponent<ObjectDrag>();
+            Destroy(drag);
+            Placed = true;
+            
+            //doe dingen als placed
+        }
     }
 }

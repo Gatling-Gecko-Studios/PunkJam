@@ -124,7 +124,7 @@ public class DayUI : MonoBehaviour
     private void PlaceCoffin()
     {
         Debug.Log("Place Coffin");
-        BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.prefab1);
+        BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.CryptPrefab);
     }
 
     private void PlaceGrave()
