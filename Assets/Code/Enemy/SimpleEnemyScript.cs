@@ -28,22 +28,25 @@ public class SimpleEnemyScript : MonoBehaviour
     public float attackCooldown;
 
     private bool canAttack;
-    private Rigidbody rb;
+
+    [SerializeField] private Animator animator;
+
+    private RagdollStateController ragdollController;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         canAttack = true;
         agent = GetComponent<NavMeshAgent>();
         currentState = startState;
         agent.speed = movementSpeed;
         agent.stoppingDistance = attackRange;
         target = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
+        ragdollController = GetComponent<RagdollStateController>();
     }
 
     void Update()
     {
-        if (health == 0) return;
         switch (currentState)
         {
             case States.idle:
@@ -51,6 +54,9 @@ public class SimpleEnemyScript : MonoBehaviour
 
             case States.chase:
                 agent.SetDestination(target.transform.position);
+                animator.SetBool("Chase", true);
+                animator.SetBool("Die", false);
+                animator.SetBool("Attack", false);
                 if (InAttackRange())
                 {
                     currentState = States.attack;
@@ -60,8 +66,10 @@ public class SimpleEnemyScript : MonoBehaviour
 
             case States.attack:
                 Attack();
-
-                if(!InAttackRange())
+                animator.SetBool("Chase", false);
+                animator.SetBool("Die", false);
+                animator.SetBool("Attack", true);
+                if (!InAttackRange())
                 {
                     currentState = States.chase;
                     agent.isStopped = false;
@@ -69,6 +77,9 @@ public class SimpleEnemyScript : MonoBehaviour
                 break;
 
             case States.death:
+                animator.SetBool("Chase", false);
+                animator.SetBool("Die", true);
+                animator.SetBool("Attack", false);
                 break;
         }
     }
@@ -111,20 +122,22 @@ public class SimpleEnemyScript : MonoBehaviour
         canAttack = true;
     }
 
-    public void TakeDamageAndForce(int damage, float force, Vector3 direction)
+    public void TakeDamage(int damage)
     {
         if (health - damage <= 0)
         {
-            health = 0;
-            Debug.Log("Zombie died, LOL");
-
-            Destroy(agent);
-            rb.isKinematic = false;
-            rb.AddForce(direction * force, ForceMode.Impulse);
+            Die();
         }
         else
         {
             health -= damage;
         }
+    }
+
+    private void Die()
+    {
+        health = 0;
+        ragdollController.EnableRagdollAndApplyForce(Vector3.back, 10f);
+        Debug.Log("Zombie died, LOL");
     }
 }
