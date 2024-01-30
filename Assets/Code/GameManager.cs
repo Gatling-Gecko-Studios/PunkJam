@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -12,8 +13,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject weaponHolder;
     [SerializeField] GameObject character;
     [SerializeField] GameObject dayUI;
+    [SerializeField] GameObject nightUI;
     public PlayerInputActions playerInputActions;
     public GameObject mainCamera;
+
+    public int dayCounter;
+    [SerializeField] Transform transitionSpawnPoint;
+    [SerializeField] GameObject transition1;
+    [SerializeField] GameObject transition2;
+    [SerializeField] GameObject transition3;
 
     private bool FPSMode;
 
@@ -34,6 +42,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dayCounter = 0;
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         player = GameObject.FindGameObjectWithTag("Player");
         ToggleWeaponHolder(false); //disable weaponholder on start
@@ -44,6 +53,39 @@ public class GameManager : MonoBehaviour
     {
         timer += Time.deltaTime;
         TranslateTimeToHour();
+    }
+
+    private void TransitionToNextDay()
+    {
+        timer = 0f;
+        dayCounter += 1;
+        if(dayCounter == 1)
+        {
+            Instantiate(transition1, transitionSpawnPoint);
+        }
+        if (dayCounter == 2)
+        {
+            Instantiate(transition2, transitionSpawnPoint);
+        }
+        if (dayCounter == 3)
+        {
+            Instantiate(transition3, transitionSpawnPoint);
+
+            //TRANSITION TO FPS MODE!!!
+            StartCoroutine(TransitionInSeconds(5));
+
+        }
+    }
+
+    private void TransitionToFPS()
+    {
+        mainCamera.GetComponent<CameraController>().ChangeToFPS();
+    }
+
+    private IEnumerator TransitionInSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        TransitionToFPS();
     }
 
     private void TranslateTimeToHour()
@@ -59,6 +101,11 @@ public class GameManager : MonoBehaviour
 
         // Ensure the hour wraps around from 12 back to 1
         hour = (hour % 11 == 0) ? 11 : hour;
+
+        if(hour == 12)
+        {
+            TransitionToNextDay();
+        }
     }
 
     private void OnEnable()
@@ -88,6 +135,7 @@ public class GameManager : MonoBehaviour
         {
             weaponHolder.SetActive(value);
             dayUI.SetActive(!value);
+            nightUI.SetActive(value);
             character.SetActive(!value);
         }
         else
