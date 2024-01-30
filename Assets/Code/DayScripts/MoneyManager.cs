@@ -19,6 +19,7 @@ public class MoneyManager : MonoBehaviour
 
     void Start()
     {
+        currentMoney = 100;
         StartEarningMoney();
         UpdateGraveCount();
         StartCoroutine(MoneyTicks());
@@ -34,6 +35,7 @@ public class MoneyManager : MonoBehaviour
             Debug.Log(currentMoney);
         }
     }
+    
 
     public void UpdateGraveCount()
     {

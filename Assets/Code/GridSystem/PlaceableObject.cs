@@ -8,6 +8,7 @@ namespace Code.GridSystem
         public bool Placed { get; private set; }
         public Vector3Int Size { get; private set; }
         private Vector3[] Vertices;
+        private MoneyManager _moneyManager;
 
         private void GetColliderVertexPositionsLocal()
         {
@@ -42,6 +43,7 @@ namespace Code.GridSystem
         {
             GetColliderVertexPositionsLocal();
             CalculateSizeInCells();
+            _moneyManager = FindObjectOfType<MoneyManager>();
         }
 
         public virtual void Place()
@@ -49,7 +51,7 @@ namespace Code.GridSystem
             ObjectDrag drag = gameObject.GetComponent<ObjectDrag>();
             Destroy(drag);
             Placed = true;
-            
+            _moneyManager.UpdateGraveCount();
             //doe dingen als placed
         }
     }
