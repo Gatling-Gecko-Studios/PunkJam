@@ -12,6 +12,7 @@ public class Gun : MonoBehaviour
     private int currentLoadedBullets = 2;
     private GameObject weaponHolder;
     private Shake shakeScript;
+    private bool isReloading;
 
     [Tooltip("how much the z axis gets moved back when shooting. -1 is quite a lot, -2 is maybe too much")]
     [SerializeField] float gunRecoilOffset;
@@ -31,15 +32,16 @@ public class Gun : MonoBehaviour
 
     void ShootInput()
     {
-        if(playerInputActions.Night.Shoot.triggered && currentLoadedBullets > 0)
+        if(playerInputActions.Night.Shoot.triggered)
         {
+            if(currentLoadedBullets == 0 || isReloading) { return; }
             Shoot();
         }
     }
 
     void ReloadInput()
     {
-        if(playerInputActions.Night.Reload.triggered)
+        if(playerInputActions.Night.Reload.triggered && !isReloading)
         {
             Reload();
         }
@@ -73,6 +75,7 @@ public class Gun : MonoBehaviour
 
     private void Reload()
     {
+        isReloading = true;
         Vector3[] axisArray = {
             Vector3.up,
             Vector3.forward,
@@ -137,6 +140,7 @@ public class Gun : MonoBehaviour
         // Ensure the rotation finishes exactly at 360 degrees
         weaponHolder.transform.localRotation = Quaternion.Euler(targetEulerAngles);
         RestockAmmo();
+        isReloading = false;
     }
 
     private void RestockAmmo()
