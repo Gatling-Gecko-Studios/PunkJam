@@ -147,6 +147,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Button"",
+                    ""id"": ""3791524e-d257-44a2-aeb4-0182e82c1f0b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""7bb0552a-334b-4018-b5aa-9fffabb8aa8e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -158,6 +176,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1b9e643e-8d10-48f4-9612-2b3afaa4354e"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""435a7935-d0e4-425c-a897-0c5ffe31f44a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -230,6 +270,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         // Night
         m_Night = asset.FindActionMap("Night", throwIfNotFound: true);
         m_Night_Look = m_Night.FindAction("Look", throwIfNotFound: true);
+        m_Night_Shoot = m_Night.FindAction("Shoot", throwIfNotFound: true);
+        m_Night_Reload = m_Night.FindAction("Reload", throwIfNotFound: true);
         // InGameUI
         m_InGameUI = asset.FindActionMap("InGameUI", throwIfNotFound: true);
         m_InGameUI_Newaction = m_InGameUI.FindAction("New action", throwIfNotFound: true);
@@ -360,11 +402,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Night;
     private List<INightActions> m_NightActionsCallbackInterfaces = new List<INightActions>();
     private readonly InputAction m_Night_Look;
+    private readonly InputAction m_Night_Shoot;
+    private readonly InputAction m_Night_Reload;
     public struct NightActions
     {
         private @PlayerInputActions m_Wrapper;
         public NightActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Look => m_Wrapper.m_Night_Look;
+        public InputAction @Shoot => m_Wrapper.m_Night_Shoot;
+        public InputAction @Reload => m_Wrapper.m_Night_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Night; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -377,6 +423,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
         }
 
         private void UnregisterCallbacks(INightActions instance)
@@ -384,6 +436,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
         }
 
         public void RemoveCallbacks(INightActions instance)
@@ -502,6 +560,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public interface INightActions
     {
         void OnLook(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface IInGameUIActions
     {

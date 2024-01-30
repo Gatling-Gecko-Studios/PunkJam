@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     private void MoveInput()
     {
         // Check if the player is in first-person mode
-        if (GameManager.Instance.FPSMode)
+        if (GameManager.Instance.GetFPSMode())
         {
             // Read movement input relative to the player's forward and right directions
             movementVector = playerInputActions.Day.Move.ReadValue<Vector2>();
@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.AddForce(moveDirection * moveSpeed);
-        if (GameManager.Instance.FPSMode || moveDirection == Vector3.zero) return;
+        if (GameManager.Instance.GetFPSMode() || moveDirection == Vector3.zero) return;
         // Calculate the rotation towards the move direction
         Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
 
