@@ -67,13 +67,56 @@ public class CameraController : MonoBehaviour
 
     public void ChangeToFPS()
     {
-        Debug.Log("changed to perspective");
+        Debug.Log("Changed to perspective");
+        StartCoroutine(TransitionToFPS());
+    }
+
+    private IEnumerator TransitionToFPS()
+    {
+        // Save initial position and rotation
+        Vector3 initialPosition = transform.position;
+        Quaternion initialRotation = transform.rotation;
+
+        // Calculate target position and rotation
+        Vector3 targetPosition = FPSCameraPoint.position;
+        Quaternion targetRotation = Quaternion.LookRotation(FPSCameraPoint.forward);
+
+        // Time elapsed during the transition
+        float elapsedTime = 0f;
+
+        if (mainCamera != null)
+        {
+            mainCamera.orthographic = false;
+        }
+
+        // Perform transition
+        while (elapsedTime < 1f)
+        {
+            // Calculate interpolation factor
+            float t = elapsedTime / 1f;
+
+            // Lerp position and rotation
+            transform.position = Vector3.Lerp(initialPosition, targetPosition, t);
+            transform.rotation = Quaternion.Slerp(initialRotation, targetRotation, t);
+
+            // Update elapsed time
+            elapsedTime += Time.deltaTime;
+
+            // Wait for the next frame
+            yield return null;
+        }
+
         FPSMode = true;
         GameManager.Instance.SetFPSMode(true);
-        mainCamera.orthographic = false;
+
+        // Ensure final position and rotation
         transform.position = FPSCameraPoint.position;
         transform.rotation = Quaternion.LookRotation(FPSCameraPoint.forward);
 
+        // Set camera orthographic mode to false
+
+
+        // Lock cursor
         Cursor.lockState = CursorLockMode.Locked;
     }
 
