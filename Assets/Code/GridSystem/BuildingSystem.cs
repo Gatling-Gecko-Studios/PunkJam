@@ -106,8 +106,8 @@ namespace Code.GridSystem
         {
             BoundsInt area = new BoundsInt();
             area.position = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
-            //area.size = placeableObject.Size;
-            area.size = new Vector3Int(area.size.x + 1, area.size.y + 1, area.size.z);
+            area.size = placeableObject.Size;
+            //area.size = new Vector3Int(area.size.x + 1, area.size.y + 1, area.size.z);
             TileBase[] baseArray = GetTilesBlock(area, MainTilemap);
             foreach (var b in baseArray)
             {
