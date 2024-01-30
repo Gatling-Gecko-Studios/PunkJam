@@ -30,6 +30,12 @@ public class DayUI : MonoBehaviour
     public VisualElement decorationsButtonsBackground;
     public VisualElement wallsButtonsBackground;
 
+    [Header("Clock Containers")]
+    public VisualElement clockImageContainer;
+
+    [Header("Money Value Label")]
+    public Label moneyValueLabel;
+
     [Header("Check Day")]
     public bool dayOne;
     public bool dayTwo;
@@ -37,8 +43,8 @@ public class DayUI : MonoBehaviour
     [Header("Hour")]
     public int hour;
 
-    [Header("Clock Containers")]
-    public VisualElement clockImageContainer;
+    [Header("Money")]
+    public int moneyValue;
 
     private void Awake()
     {
@@ -60,6 +66,8 @@ public class DayUI : MonoBehaviour
         decorationsButtonsBackground = root.Q<VisualElement>("DecorationsButtonsBackground");
         wallsButtonsBackground = root.Q<VisualElement>("WallsButtonsBackground");
         clockImageContainer = root.Q<VisualElement>("ClockImageContainer");
+
+        moneyValueLabel = root.Q<Label>("MoneyValueLabel");
     }
 
     // Start is called before the first frame update
@@ -85,6 +93,12 @@ public class DayUI : MonoBehaviour
     {
         CheckDay();
         CheckHour();
+        UpdateMoney();
+    }
+
+    private void UpdateMoney()
+    {
+        moneyValueLabel.text = moneyValue.ToString();
     }
 
     private void OpenGraves()
@@ -92,10 +106,6 @@ public class DayUI : MonoBehaviour
         gravesButtonsBackground.style.display = DisplayStyle.Flex;
         decorationsButtonsBackground.style.display = DisplayStyle.None;
         wallsButtonsBackground.style.display = DisplayStyle.None;
-
-        gravesClassButton.style.backgroundColor = new Color(0f, 0f, 0f, 1f);
-        decorationsClassButton.style.backgroundColor = new Color(0.3962264f, 0.3962264f, 0.3962264f, 1f);
-        wallsClassButton.style.backgroundColor = new Color(0.3962264f, 0.3962264f, 0.3962264f, 1f);
     }
 
     private void OpenDecorations()
@@ -103,10 +113,6 @@ public class DayUI : MonoBehaviour
         gravesButtonsBackground.style.display = DisplayStyle.None;
         decorationsButtonsBackground.style.display = DisplayStyle.Flex;
         wallsButtonsBackground.style.display = DisplayStyle.None;
-
-        gravesClassButton.style.backgroundColor = new Color(0.3962264f, 0.3962264f, 0.3962264f, 1f);
-        decorationsClassButton.style.backgroundColor = new Color(0f, 0f, 0f, 1f);
-        wallsClassButton.style.backgroundColor = new Color(0.3962264f, 0.3962264f, 0.3962264f, 1f);
     }
 
     private void OpenWalls()
@@ -114,10 +120,6 @@ public class DayUI : MonoBehaviour
         gravesButtonsBackground.style.display = DisplayStyle.None;
         decorationsButtonsBackground.style.display = DisplayStyle.None;
         wallsButtonsBackground.style.display = DisplayStyle.Flex;
-
-        gravesClassButton.style.backgroundColor = new Color(0.3962264f, 0.3962264f, 0.3962264f, 1f);
-        decorationsClassButton.style.backgroundColor = new Color(0.3962264f, 0.3962264f, 0.3962264f, 1f);
-        wallsClassButton.style.backgroundColor = new Color(0f, 0f, 0f, 1f);
     }
 
     private void PlaceCoffin()

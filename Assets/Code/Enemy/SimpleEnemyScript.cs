@@ -139,6 +139,7 @@ public class SimpleEnemyScript : MonoBehaviour
     {
         health = 0;
         ragdollController.EnableRagdollAndApplyForce(direction, 30f);
+        GetComponent<Collider>().enabled = false;
         Debug.Log("Zombie died, LOL");
     }
 }

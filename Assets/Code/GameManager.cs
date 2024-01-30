@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public float timer;
     public int hour;
     [SerializeField] GameObject weaponHolder;
+    [SerializeField] GameObject character;
     [SerializeField] GameObject dayUI;
     public PlayerInputActions playerInputActions;
     public GameObject mainCamera;
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
         {
             weaponHolder.SetActive(value);
             dayUI.SetActive(!value);
-            player.GetComponent<Renderer>().enabled = !value;
+            character.SetActive(!value);
         }
         else
         {

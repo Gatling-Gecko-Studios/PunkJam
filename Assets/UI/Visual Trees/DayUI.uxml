@@ -1,26 +1,42 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Style%20Sheets/DayUI.uss?fileID=7433441132597879392&amp;guid=102fbea5e388f40b1970b3d35f596321&amp;type=3#DayUI" />
-    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/References/Punkjam.png?fileID=2800000&amp;guid=595474fee35f04289b5110ebc911c168&amp;type=3#Punkjam&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/References/Punkjam.png?fileID=2800000&amp;guid=595474fee35f04289b5110ebc911c168&amp;type=3#Punkjam&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0); display: flex;">
         <ui:VisualElement style="flex-grow: 1; position: absolute; width: 100%; height: 12%;">
             <ui:VisualElement style="flex-grow: 1;">
-                <ui:VisualElement name="ClockImageContainer" class="clock-image-container" style="flex-grow: 1; position: absolute; background-image: none;" />
+                <ui:VisualElement name="MoneyContainer" class="money-background-container" style="flex-grow: 1; position: absolute; left: 0; width: 12%; height: 100%; flex-direction: row;">
+                    <ui:VisualElement style="flex-grow: 1; width: 50%; padding-top: 10px; padding-right: 5px; padding-bottom: 10px; padding-left: 5px;">
+                        <ui:VisualElement style="flex-grow: 1; position: relative; width: 100%; height: 100%; align-items: center; justify-content: center; border-top-left-radius: 100px; border-top-right-radius: 100px; border-bottom-right-radius: 100px; border-bottom-left-radius: 100px; border-left-color: rgb(178, 114, 0); border-right-color: rgb(178, 114, 0); border-top-color: rgb(178, 114, 0); border-bottom-color: rgb(178, 114, 0); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; background-color: rgb(224, 143, 0);">
+                            <ui:Label tabindex="-1" text="$" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(255, 168, 0); font-size: 60px;" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement style="flex-grow: 1; width: 50%; justify-content: center; -unity-text-align: upper-center; font-size: 36px; color: rgb(0, 0, 0);">
+                        <ui:Label tabindex="-1" text="100" parse-escape-sequences="true" display-tooltip-when-elided="true" name="MoneyValueLabel" style="color: rgb(255, 255, 255); -unity-font-style: bold; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-outline-width: 1px; font-size: 50px;" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; position: absolute; right: 0; height: 100%; width: 7%; align-items: center; justify-content: center;">
+                    <ui:VisualElement name="ClockImageContainer" class="clock-image-container" style="flex-grow: 1; position: absolute;" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;" />
         <ui:VisualElement style="flex-grow: 1; height: 19.3%; position: absolute; width: 100%; bottom: 0; align-items: center;">
             <ui:VisualElement style="flex-grow: 1; width: 36.5%;">
                 <ui:VisualElement style="flex-grow: 1; position: absolute; bottom: 0; width: 100%; height: 20%; flex-direction: row;">
-                    <ui:Button text="GRAVES" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GravesClassButton" class="building-class-button" style="background-color: rgb(0, 0, 0);" />
+                    <ui:Button text="GRAVES" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GravesClassButton" class="building-class-button" />
                     <ui:Button text="DECORATIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationsClassButton" class="building-class-button" />
                     <ui:Button text="WALLS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WallsClassButton" class="building-class-button" />
                 </ui:VisualElement>
-                <ui:VisualElement name="GravesButtonsBackground" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; background-color: rgb(178, 178, 178);">
+                <ui:VisualElement name="GravesButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
-                            <ui:Button text="COFFIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoffinButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoffinButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/CoffinIcon&apos;); position: absolute;" />
+                            </ui:Button>
                         </ui:VisualElement>
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%;">
-                            <ui:Button text="GRAVE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GraveButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="GraveButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/GraveIcon&apos;); position: absolute;" />
+                            </ui:Button>
                             <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
                         </ui:VisualElement>
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; right: 0;">
@@ -29,7 +45,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="DecorationsButtonsBackground" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none; background-color: rgb(178, 178, 178);">
+                <ui:VisualElement name="DecorationsButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
                             <ui:Button text="DECORATION 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationOneButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
@@ -44,7 +60,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="WallsButtonsBackground" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; background-color: rgb(178, 178, 178); display: none;">
+                <ui:VisualElement name="WallsButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
                             <ui:Button text="BRICK WALL" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BrickWallButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
