@@ -112,7 +112,7 @@ public class SimpleEnemyScript : MonoBehaviour
             {
                 if(hit.transform.gameObject.tag == "Player")
                 {
-                    Debug.Log("Hit object: " + hit.transform.gameObject.name + " for " + damage + " damage.");
+                    //Debug.Log("Hit object: " + hit.transform.gameObject.name + " for " + damage + " damage.");
                     PlayerHealth playerHealth = hit.transform.gameObject.GetComponent<PlayerHealth>();
                     playerHealth.TakeDamage(damage);
                 }
@@ -142,7 +142,8 @@ public class SimpleEnemyScript : MonoBehaviour
     {
         health = 0;
         audioSource.PlayOneShot(deathClip);
-        ragdollController.EnableRagdollAndApplyForce(Vector3.back, 10f);
+        ragdollController.EnableRagdollAndApplyForce(direction, 30f);
+        GetComponent<Collider>().enabled = false;
         Debug.Log("Zombie died, LOL");
     }
 }
