@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TextMesh Pro/Documentation/TextMesh Pro User Guide 2016.pdf.meta
 guid: 1b8d251f9af63b746bf2f7ffe00ebb9b
+========
+guid: b97e58931a4d848ad8cf07b45acf7ab7
+>>>>>>>> development:Assets/Scenes/GeordiNightUI.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

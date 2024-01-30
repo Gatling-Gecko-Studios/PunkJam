@@ -19,6 +19,12 @@ public class Gun : MonoBehaviour
     private bool isReloading;
 
 
+    private AudioSource mainAudioSource;
+    [SerializeField]
+    private AudioClip reloadAudioClip;
+    [SerializeField]
+    private AudioClip shotAudioClip;
+
     [Tooltip("how much the z axis gets moved back when shooting. -1 is quite a lot, -2 is maybe too much")]
     [SerializeField] float gunRecoilOffset;
     void Start()
@@ -28,6 +34,7 @@ public class Gun : MonoBehaviour
         playerInputActions = GameManager.Instance.playerInputActions;
         swayAndBob = FindObjectOfType<SwayAndBob>(); //assuming there is only 1 swayandbob script in the scene
         shakeScript = FindObjectOfType<Shake>();
+        mainAudioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -66,6 +73,7 @@ public class Gun : MonoBehaviour
         RaycastShoot();
 
         //sound
+        mainAudioSource.PlayOneShot(shotAudioClip);
 
         //camera shake
         shakeScript.StartShake();
@@ -93,12 +101,6 @@ public class Gun : MonoBehaviour
                 Debug.Log("Deal damage");
                 enemyScript.TakeDamage(shotDamage, mainCamera.transform.forward);
             }
-
-            if(hit.collider.gameObject.TryGetComponent(out Rigidbody enemyRb))
-            {
-                Debug.Log("HIT RB");
-                enemyRb.AddForce(shotForce * mainCamera.transform.forward, ForceMode.Impulse);
-            }
         }
     }
 
@@ -120,7 +122,7 @@ public class Gun : MonoBehaviour
         // Calculate the rotation speed based on the duration
         float rotationSpeed = rotationAmount / rotationDuration;
 
-        //TODO: play sound
+        mainAudioSource.PlayOneShot(reloadAudioClip);
 
         // Start rotating the weaponHolder around the random axis
         StartCoroutine(RotateOverTime(rotationDuration));

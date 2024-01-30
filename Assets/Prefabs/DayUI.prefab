@@ -64,4 +64,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dayOne: 0
   dayTwo: 0
-  hour: 2
+  hour: 0
+  moneyValue: 0

@@ -31,6 +31,9 @@ public class SimpleEnemyScript : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private AudioClip deathClip;
+    private AudioSource audioSource;
+
     private RagdollStateController ragdollController;
 
     void Start()
@@ -43,11 +46,11 @@ public class SimpleEnemyScript : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
         ragdollController = GetComponent<RagdollStateController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
-        if (health == 0) return;
         switch (currentState)
         {
             case States.idle:
@@ -109,7 +112,7 @@ public class SimpleEnemyScript : MonoBehaviour
             {
                 if(hit.transform.gameObject.tag == "Player")
                 {
-                    Debug.Log("Hit object: " + hit.transform.gameObject.name + " for " + damage + " damage.");
+                    //Debug.Log("Hit object: " + hit.transform.gameObject.name + " for " + damage + " damage.");
                     PlayerHealth playerHealth = hit.transform.gameObject.GetComponent<PlayerHealth>();
                     playerHealth.TakeDamage(damage);
                 }
@@ -138,7 +141,9 @@ public class SimpleEnemyScript : MonoBehaviour
     private void Die(Vector3 direction)
     {
         health = 0;
+        audioSource.PlayOneShot(deathClip);
         ragdollController.EnableRagdollAndApplyForce(direction, 30f);
+        GetComponent<Collider>().enabled = false;
         Debug.Log("Zombie died, LOL");
     }
 }

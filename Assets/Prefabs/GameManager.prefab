@@ -44,3 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 747f24041a028154eb620bfdf860f3f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timer: 0
+  hour: 0
+  weaponHolder: {fileID: 0}
+  dayUI: {fileID: 0}
+  mainCamera: {fileID: 0}
