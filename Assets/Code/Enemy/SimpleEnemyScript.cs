@@ -47,6 +47,7 @@ public class SimpleEnemyScript : MonoBehaviour
 
     void Update()
     {
+        if (health == 0) return;
         switch (currentState)
         {
             case States.idle:
@@ -122,11 +123,11 @@ public class SimpleEnemyScript : MonoBehaviour
         canAttack = true;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 direction)
     {
         if (health - damage <= 0)
         {
-            Die();
+            Die(direction);
         }
         else
         {
@@ -134,10 +135,10 @@ public class SimpleEnemyScript : MonoBehaviour
         }
     }
 
-    private void Die()
+    private void Die(Vector3 direction)
     {
         health = 0;
-        ragdollController.EnableRagdollAndApplyForce(Vector3.back, 10f);
+        ragdollController.EnableRagdollAndApplyForce(direction, 30f);
         Debug.Log("Zombie died, LOL");
     }
 }
