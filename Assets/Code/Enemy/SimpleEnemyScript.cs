@@ -91,9 +91,12 @@ public class NewBehaviourScript : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(new Vector3(transform.position.x, 1, transform.position.z), transform.forward, out hit))
             {
-                //insert damage code here
-                //TODO: check for player layer specifically to avoid damaging other zombies
-                Debug.Log("Hit object: " + hit.transform.gameObject.name + " for " + damage + " damage.");
+                if(hit.transform.gameObject.tag == "Player")
+                {
+                    Debug.Log("Hit object: " + hit.transform.gameObject.name + " for " + damage + " damage.");
+                    PlayerHealth playerHealth = hit.transform.gameObject.GetComponent<PlayerHealth>();
+                    playerHealth.TakeDamage(damage);
+                }
             }
         }
     }
@@ -102,5 +105,24 @@ public class NewBehaviourScript : MonoBehaviour
     {
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
+    }
+
+    public void TakeDamage(int damage)
+    {
+        if (health - damage <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            health -= damage;
+        }
+    }
+
+    private void Die()
+    {
+        health = 0;
+        Debug.Log("Zombie died, LOL");
+        Destroy(gameObject);
     }
 }
