@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject mainCamera;
     [SerializeField] float moveSpeed = 10f;
     [SerializeField] Transform topDownMovementOrientationRefference;
+    [SerializeField] float rotationSpeed;
 
     private Vector3 moveDirection;
     private Rigidbody rb;
@@ -57,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
             // Read movement input in world space directions
             movementVector = playerInputActions.Day.Move.ReadValue<Vector2>();
             // In top-down mode, up corresponds to north, so we use world space directions
+
             moveDirection = topDownMovementOrientationRefference.forward * movementVector.y + topDownMovementOrientationRefference.right * movementVector.x;
         }
     }
@@ -64,6 +66,14 @@ public class PlayerMovement : MonoBehaviour
     private void Move()
     {
         rb.AddForce(moveDirection * moveSpeed);
+        if (GameManager.Instance.FPSMode || moveDirection == Vector3.zero) return;
+        // Calculate the rotation towards the move direction
+        Quaternion targetRotation = Quaternion.LookRotation(moveDirection, Vector3.up);
+
+        // Lerp the player's rotation towards the target rotation
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        // Move the player based on the move direction
     }
 
 

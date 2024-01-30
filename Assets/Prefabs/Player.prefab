@@ -256,3 +256,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 0}
   moveSpeed: 50
+  topDownMovementOrientationRefference: {fileID: 0}
+  rotationSpeed: 30
