@@ -60,6 +60,18 @@ namespace Code.GridSystem
                     }
                 }
             }
+            else if (Input.GetKeyDown(KeyCode.Space))
+            {
+                if (temp.CanBePlaced())
+                {
+                    temp.Place();
+                }
+            }
+            else if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                ClearArea();
+                Destroy(temp);
+            }
         }
 
         #endregion
@@ -137,6 +149,27 @@ namespace Code.GridSystem
             
             tempTilemap.SetTilesBlock(buildingArea, tileArray);
             prevArea = buildingArea;
+        }
+
+        public bool CanTakeArea(BoundsInt area)
+        {
+            TileBase[] baseArray = GetTilesBlock(area, mainTilemap);
+            foreach (var b in baseArray)
+            {
+                if (b != _tileBases[TileType.White])
+                {
+                    Debug.Log("Cannot place here");
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public void TakeArea(BoundsInt area)
+        {
+            SetTilesBlock(area, TileType.Empty, tempTilemap);
+            SetTilesBlock(area, TileType.Green, mainTilemap);
         }
 
         #endregion
