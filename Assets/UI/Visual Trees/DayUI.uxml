@@ -1,0 +1,67 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI/Style%20Sheets/DayUI.uss?fileID=7433441132597879392&amp;guid=102fbea5e388f40b1970b3d35f596321&amp;type=3#DayUI" />
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/References/Punkjam.png?fileID=2800000&amp;guid=595474fee35f04289b5110ebc911c168&amp;type=3#Punkjam&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
+        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:VisualElement style="flex-grow: 1;" />
+        <ui:VisualElement style="flex-grow: 1; height: 19.3%; position: absolute; width: 100%; bottom: 0; align-items: center;">
+            <ui:VisualElement style="flex-grow: 1; width: 36.5%;">
+                <ui:VisualElement style="flex-grow: 1; position: absolute; bottom: 0; width: 100%; height: 20%; flex-direction: row;">
+                    <ui:Button text="GRAVES" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GravesClassButton" class="building-class-button" />
+                    <ui:Button text="DECORATIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationsClassButton" class="building-class-button" />
+                    <ui:Button text="WALLS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WallsClassButton" class="building-class-button" />
+                </ui:VisualElement>
+                <ui:VisualElement name="GravesButtonsBackground" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none; background-color: rgb(178, 178, 178);">
+                    <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
+                            <ui:Button text="COFFIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoffinButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%;">
+                            <ui:Button text="GRAVE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GraveButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; right: 0;">
+                            <ui:Button text="TOMB" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TombButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement name="LockLayerTwo" class="lock-layer lock-layer-two" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="DecorationsButtonsBackground" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none; background-color: rgb(178, 178, 178);">
+                    <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
+                            <ui:Button text="DECORATION 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationOneButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%;">
+                            <ui:Button text="DECORATION 2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationTwoButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; right: 0;">
+                            <ui:Button text="Fountain" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FountainButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement name="LockLayerTwo" class="lock-layer lock-layer-two" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="WallsButtonsBackground" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; background-color: rgb(178, 178, 178); display: none;">
+                    <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
+                            <ui:Button text="Brick Wall" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BrickWallButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%;">
+                            <ui:Button text="Garden Fence" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GardenFenceButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; right: 0;">
+                            <ui:Button text="Iron Fence" parse-escape-sequences="true" display-tooltip-when-elided="true" name="IronFenceButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement name="LockLayerTwo" class="lock-layer lock-layer-two" />
+                            </ui:Button>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
