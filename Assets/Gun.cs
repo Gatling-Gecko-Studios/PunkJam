@@ -85,9 +85,16 @@ public class Gun : MonoBehaviour
         {
             //TODO: add small delay here, where during you also can't reload manually
 
-            Reload();
+            StartCoroutine(ReloadInSeconds(0.3f));
         }
 
+
+    }
+
+    private IEnumerator ReloadInSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        Reload();
 
     }
 

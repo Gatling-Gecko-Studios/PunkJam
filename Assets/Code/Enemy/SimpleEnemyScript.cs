@@ -51,6 +51,7 @@ public class SimpleEnemyScript : MonoBehaviour
 
     void Update()
     {
+        if (health == 0) return;
         switch (currentState)
         {
             case States.idle:
