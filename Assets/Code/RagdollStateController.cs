@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -68,6 +69,8 @@ public class RagdollStateController : MonoBehaviour
 
         foreach (Rigidbody rb in rigidbodies)
         {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
             rb.AddForce(forceDirection * forceMagnitude, ForceMode.Impulse);
         }
     }
