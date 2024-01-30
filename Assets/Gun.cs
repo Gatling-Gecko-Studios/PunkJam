@@ -93,12 +93,6 @@ public class Gun : MonoBehaviour
                 Debug.Log("Deal damage");
                 enemyScript.TakeDamage(shotDamage, mainCamera.transform.forward);
             }
-
-            if(hit.collider.gameObject.TryGetComponent(out Rigidbody enemyRb))
-            {
-                Debug.Log("HIT RB");
-                enemyRb.AddForce(shotForce * mainCamera.transform.forward, ForceMode.Impulse);
-            }
         }
     }
 
