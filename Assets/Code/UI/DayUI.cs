@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Code.GridSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -123,6 +124,7 @@ public class DayUI : MonoBehaviour
     private void PlaceCoffin()
     {
         Debug.Log("Place Coffin");
+        BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.prefab1);
     }
 
     private void PlaceGrave()
