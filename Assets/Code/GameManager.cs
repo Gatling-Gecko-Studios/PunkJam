@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject transition2;
     [SerializeField] GameObject transition3;
 
+    [SerializeField] GameObject FPSMusicManager;
+
     private bool FPSMode;
 
     private void Awake()
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
             Instantiate(transition3, transitionSpawnPoint);
 
             //TRANSITION TO FPS MODE!!!
-            StartCoroutine(TransitionInSeconds(5));
+            StartCoroutine(TransitionInSeconds(21.3f));
 
         }
     }
@@ -84,6 +86,8 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator TransitionInSeconds(float seconds)
     {
+        Destroy(FindAnyObjectByType<FarmSimBackgroundManager>().gameObject);
+        Instantiate(FPSMusicManager);
         yield return new WaitForSeconds(seconds);
         TransitionToFPS();
     }
