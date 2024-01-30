@@ -27,7 +27,7 @@
     width: 30%;
     height: 100%;
     position: absolute;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgb(233, 153, 101);
 }
 
 .building-button {
@@ -46,7 +46,7 @@
     border-right-width: 0;
     border-bottom-width: 0;
     border-left-width: 0;
-    background-color: rgb(233, 153, 101);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .building-button:hover {
