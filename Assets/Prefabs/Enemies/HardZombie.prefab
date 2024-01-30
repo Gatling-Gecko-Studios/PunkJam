@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2660321178307417357}
   - component: {fileID: 2346510553041858043}
   - component: {fileID: 1816804956563269229}
+  - component: {fileID: 5012302650238302036}
   m_Layer: 0
   m_Name: HardZombie
   m_TagString: Untagged
@@ -127,6 +128,25 @@ MonoBehaviour:
   damage: 15
   attackRange: 2
   attackCooldown: 0.7
+--- !u!114 &5012302650238302036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2603952632904693499}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 1
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &5619092032630785567
 GameObject:
   m_ObjectHideFlags: 0
