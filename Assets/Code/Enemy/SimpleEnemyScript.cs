@@ -28,9 +28,11 @@ public class SimpleEnemyScript : MonoBehaviour
     public float attackCooldown;
 
     private bool canAttack;
+    private Rigidbody rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         canAttack = true;
         agent = GetComponent<NavMeshAgent>();
         currentState = startState;
@@ -41,6 +43,7 @@ public class SimpleEnemyScript : MonoBehaviour
 
     void Update()
     {
+        if (health == 0) return;
         switch (currentState)
         {
             case States.idle:
@@ -108,22 +111,20 @@ public class SimpleEnemyScript : MonoBehaviour
         canAttack = true;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamageAndForce(int damage, float force, Vector3 direction)
     {
         if (health - damage <= 0)
         {
-            Die();
+            health = 0;
+            Debug.Log("Zombie died, LOL");
+
+            Destroy(agent);
+            rb.isKinematic = false;
+            rb.AddForce(direction * force, ForceMode.Impulse);
         }
         else
         {
             health -= damage;
         }
-    }
-
-    private void Die()
-    {
-        health = 0;
-        Debug.Log("Zombie died, LOL");
-        Destroy(gameObject);
     }
 }

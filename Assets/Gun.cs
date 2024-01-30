@@ -7,6 +7,8 @@ public class Gun : MonoBehaviour
 {
     public float rotationDuration;
     public int shotDamage = 20;
+    public float shotForce = 20f;
+    public LayerMask hittableLayers;
     private PlayerInputActions playerInputActions;
     private SwayAndBob swayAndBob;
     private int maxClipSize = 2;
@@ -14,6 +16,8 @@ public class Gun : MonoBehaviour
     private GameObject weaponHolder;
     private Shake shakeScript;
     private GameObject mainCamera;
+    private bool isReloading;
+
 
     [Tooltip("how much the z axis gets moved back when shooting. -1 is quite a lot, -2 is maybe too much")]
     [SerializeField] float gunRecoilOffset;
@@ -34,15 +38,16 @@ public class Gun : MonoBehaviour
 
     void ShootInput()
     {
-        if(playerInputActions.Night.Shoot.triggered && currentLoadedBullets > 0)
+        if(playerInputActions.Night.Shoot.triggered)
         {
+            if (currentLoadedBullets == 0 || isReloading) return;
             Shoot();
         }
     }
 
     void ReloadInput()
     {
-        if(playerInputActions.Night.Reload.triggered)
+        if(playerInputActions.Night.Reload.triggered && !isReloading && currentLoadedBullets < maxClipSize)
         {
             Reload();
         }
@@ -53,8 +58,7 @@ public class Gun : MonoBehaviour
         //animation
         swayAndBob.StartGunRecoil(gunRecoilOffset);
 
-        //camera shake
-        shakeScript.StartShake();
+
 
         //shoot pellets
 
@@ -62,6 +66,9 @@ public class Gun : MonoBehaviour
         RaycastShoot();
 
         //sound
+
+        //camera shake
+        shakeScript.StartShake();
 
         //use ammo (1 of 2 shots)
         currentLoadedBullets -= 1;
@@ -72,23 +79,32 @@ public class Gun : MonoBehaviour
 
             Reload();
         }
+
+
     }
 
     private void RaycastShoot()
     {
-        if(Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit hit, 100f))
+        if(Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit hit, 300f, hittableLayers))
         {
-            Instantiate(GameObject.CreatePrimitive(PrimitiveType.Sphere), hit.point, Quaternion.identity);
+            Debug.DrawLine(mainCamera.transform.position, hit.point, Color.green, 2f);
             if(hit.collider.gameObject.TryGetComponent(out SimpleEnemyScript enemyScript))
             {
                 Debug.Log("Deal damage");
-                enemyScript.TakeDamage(shotDamage);
+                enemyScript.TakeDamageAndForce(shotDamage, shotForce, mainCamera.transform.forward);
+            }
+
+            if(hit.collider.gameObject.TryGetComponent(out Rigidbody enemyRb))
+            {
+                Debug.Log("HIT RB");
+                enemyRb.AddForce(shotForce * mainCamera.transform.forward, ForceMode.Impulse);
             }
         }
     }
 
     private void Reload()
     {
+        isReloading = true;
         Vector3[] axisArray = {
             Vector3.up,
             Vector3.forward,
@@ -153,6 +169,7 @@ public class Gun : MonoBehaviour
         // Ensure the rotation finishes exactly at 360 degrees
         weaponHolder.transform.localRotation = Quaternion.Euler(targetEulerAngles);
         RestockAmmo();
+        isReloading = false;
     }
 
     private void RestockAmmo()
