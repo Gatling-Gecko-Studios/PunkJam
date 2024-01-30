@@ -273,7 +273,8 @@ MonoBehaviour:
   gridLayout: {fileID: 594852772}
   MainTilemap: {fileID: 2006827735}
   whiteTile: {fileID: 11400000, guid: 9324e5428b864d241ae7e16371e1ac4d, type: 2}
-  CryptPrefab: {fileID: 0}
+  CryptPrefab: {fileID: 6468777811055047507, guid: 48323bed3a1cc6f4ea9d214563c34eea,
+    type: 3}
   prefab2: {fileID: 0}
 --- !u!1 &785760834 stripped
 GameObject:
