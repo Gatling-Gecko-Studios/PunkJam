@@ -29,6 +29,10 @@ public class SimpleEnemyScript : MonoBehaviour
 
     private bool canAttack;
 
+    [SerializeField] private Animator animator;
+
+    private RagdollStateController ragdollController;
+
     void Start()
     {
         canAttack = true;
@@ -37,6 +41,8 @@ public class SimpleEnemyScript : MonoBehaviour
         agent.speed = movementSpeed;
         agent.stoppingDistance = attackRange;
         target = GameObject.FindGameObjectWithTag("Player");
+        animator = GetComponent<Animator>();
+        ragdollController = GetComponent<RagdollStateController>();
     }
 
     void Update()
@@ -48,6 +54,9 @@ public class SimpleEnemyScript : MonoBehaviour
 
             case States.chase:
                 agent.SetDestination(target.transform.position);
+                animator.SetBool("Chase", true);
+                animator.SetBool("Die", false);
+                animator.SetBool("Attack", false);
                 if (InAttackRange())
                 {
                     currentState = States.attack;
@@ -57,8 +66,10 @@ public class SimpleEnemyScript : MonoBehaviour
 
             case States.attack:
                 Attack();
-
-                if(!InAttackRange())
+                animator.SetBool("Chase", false);
+                animator.SetBool("Die", false);
+                animator.SetBool("Attack", true);
+                if (!InAttackRange())
                 {
                     currentState = States.chase;
                     agent.isStopped = false;
@@ -66,6 +77,9 @@ public class SimpleEnemyScript : MonoBehaviour
                 break;
 
             case States.death:
+                animator.SetBool("Chase", false);
+                animator.SetBool("Die", true);
+                animator.SetBool("Attack", false);
                 break;
         }
     }
@@ -123,7 +137,7 @@ public class SimpleEnemyScript : MonoBehaviour
     private void Die()
     {
         health = 0;
+        ragdollController.EnableRagdollAndApplyForce(Vector3.back, 10f);
         Debug.Log("Zombie died, LOL");
-        Destroy(gameObject);
     }
 }
