@@ -29,7 +29,7 @@ public class MoneyManager : MonoBehaviour
         while(earningMoney)
         {
             yield return new WaitForSeconds(moneyTickTimer);
-            UpdateGraveCount();
+            //UpdateGraveCount();
             CalculateMoneyGained();
             Debug.Log(currentMoney);
         }
