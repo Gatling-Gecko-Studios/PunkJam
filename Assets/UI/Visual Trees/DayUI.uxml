@@ -31,7 +31,7 @@
                     <ui:Button text="DECORATIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationsClassButton" class="building-class-button" />
                     <ui:Button text="WALLS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WallsClassButton" class="building-class-button" />
                 </ui:VisualElement>
-                <ui:VisualElement name="GravesButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; display: none;">
+                <ui:VisualElement name="GravesButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; display: flex;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
                             <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoffinButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
@@ -78,7 +78,7 @@
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="WallsButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: flex;">
+                <ui:VisualElement name="WallsButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
                             <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="BrickWallButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
