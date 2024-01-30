@@ -72,8 +72,6 @@ public class PlayerMovement : MonoBehaviour
 
         // Lerp the player's rotation towards the target rotation
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-
-        // Move the player based on the move direction
     }
 
 
