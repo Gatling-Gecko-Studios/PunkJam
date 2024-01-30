@@ -56,7 +56,7 @@ public class SpawnEnemyScript : MonoBehaviour
         }
 
         spawnRate = 51 - spawnSeed;
-        Debug.Log("Current SpawnRate: " + spawnRate);
+        //Debug.Log("Current SpawnRate: " + spawnRate);
     }
 
     private IEnumerator SpawnEnemy()
