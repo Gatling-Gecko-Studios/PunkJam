@@ -44,3 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a937439a4f09f33439019aed5bb365fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyTickTimer: 2
+  graveContainer: {fileID: 0}
+  lowTierGraveEarnings: 2
+  midTierGraveEarnings: 5
+  highTierGraveEarnings: 10
+  LowTierGraves: []
+  MidTierGraves: []
+  HighTierGraves: []
+  earningMoney: 0
