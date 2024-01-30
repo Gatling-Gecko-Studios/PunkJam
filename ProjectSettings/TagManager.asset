@@ -8,6 +8,7 @@ TagManager:
   - Grave-Mid
   - Grave-High
   - LightPointer
+  - GraveContainer
   layers:
   - Default
   - TransparentFX

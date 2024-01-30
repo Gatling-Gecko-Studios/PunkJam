@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Code.GridSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -44,7 +45,7 @@ public class DayUI : MonoBehaviour
     public int hour;
 
     [Header("Money")]
-    public int moneyValue;
+    public float moneyValue;
 
     private void Awake()
     {
@@ -93,6 +94,7 @@ public class DayUI : MonoBehaviour
     {
         CheckDay();
         CheckHour();
+        moneyValue = MoneyManager.currentMoney;
         UpdateMoney();
     }
 
@@ -125,21 +127,42 @@ public class DayUI : MonoBehaviour
     private void PlaceCoffin()
     {
         Debug.Log("Place Coffin");
+        
+        if (MoneyManager.currentMoney >= 10)
+        {
+            MoneyManager.currentMoney -= 10;
+            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.CoffinPrefab);
+        }
     }
 
     private void PlaceGrave()
     {
         Debug.Log("Place Grave");
+        if (MoneyManager.currentMoney >= 20)
+        {
+            MoneyManager.currentMoney -= 20;
+            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.GraveStonePrefab);
+        }
     }
 
     private void PlaceTomb()
     {
         Debug.Log("Place Tomb");
+        if (MoneyManager.currentMoney >= 30)
+        {
+            MoneyManager.currentMoney -= 30;
+            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.CryptPrefab);
+        }
     }
 
     private void PlaceDecOne()
     {
         Debug.Log("Place Decoration One");
+        if (MoneyManager.currentMoney >= 5)
+        {
+            MoneyManager.currentMoney -= 5;
+            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.BushPrefab);
+        }
     }
 
     private void PlaceDecTwo()
@@ -150,11 +173,21 @@ public class DayUI : MonoBehaviour
     private void PlaceFountain()
     {
         Debug.Log("Place Fountain");
+        if (MoneyManager.currentMoney >= 25)
+        {
+            MoneyManager.currentMoney -= 25;
+            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.FountainPrefab);
+        }
     }
 
     private void PlaceBrickWall()
     {
         Debug.Log("Place Brick Wall");
+        if (MoneyManager.currentMoney >= 30)
+        {
+            MoneyManager.currentMoney -= 30;
+            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.BrickWallPrefab);
+        }
     }
 
     private void PlaceGardenFence()
@@ -165,6 +198,11 @@ public class DayUI : MonoBehaviour
     private void PlaceIronFence()
     {
         Debug.Log("Place Iron Fence");
+        if (MoneyManager.currentMoney >= 60)
+        {
+            MoneyManager.currentMoney -= 60;
+            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.IronFencePrefab);
+        }
     }
 
     private void CheckDay()
