@@ -26,21 +26,26 @@
                     <ui:Button text="DECORATIONS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationsClassButton" class="building-class-button" />
                     <ui:Button text="WALLS" parse-escape-sequences="true" display-tooltip-when-elided="true" name="WallsClassButton" class="building-class-button" />
                 </ui:VisualElement>
-                <ui:VisualElement name="GravesButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row;">
+                <ui:VisualElement name="GravesButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; display: none;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
                             <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="CoffinButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
                                 <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/CoffinIcon&apos;); position: absolute;" />
                             </ui:Button>
+                            <ui:Label tabindex="-1" text="10" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-align: lower-left; position: absolute;" />
                         </ui:VisualElement>
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%;">
                             <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="GraveButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
                                 <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/GraveIcon&apos;); position: absolute;" />
                             </ui:Button>
+                            <ui:Label tabindex="-1" text="20" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-align: lower-left; position: absolute;" />
                             <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
                         </ui:VisualElement>
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; right: 0;">
-                            <ui:Button text="TOMB" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TombButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="TombButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/CryptIcon&apos;); position: absolute;" />
+                            </ui:Button>
+                            <ui:Label tabindex="-1" text="30" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-align: lower-left; position: absolute;" />
                             <ui:VisualElement name="LockLayerTwo" class="lock-layer lock-layer-two" />
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -48,30 +53,46 @@
                 <ui:VisualElement name="DecorationsButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
-                            <ui:Button text="DECORATION 1" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationOneButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationOneButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/BushIcon&apos;); position: absolute;" />
+                            </ui:Button>
+                            <ui:Label tabindex="-1" text="5" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-align: lower-left; position: absolute;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%; display: none;">
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationTwoButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/FountainIcon&apos;); position: absolute;" />
+                            </ui:Button>
+                            <ui:VisualElement name="LockLayerTwo" class="lock-layer lock-layer-two" />
                         </ui:VisualElement>
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%;">
-                            <ui:Button text="DECORATION 2" parse-escape-sequences="true" display-tooltip-when-elided="true" name="DecorationTwoButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="FountainButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/FountainIcon&apos;); position: absolute;" />
+                            </ui:Button>
+                            <ui:Label tabindex="-1" text="25" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-align: lower-left; position: absolute;" />
                             <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; right: 0;">
-                            <ui:Button text="FOUNTAIN" parse-escape-sequences="true" display-tooltip-when-elided="true" name="FountainButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
-                            <ui:VisualElement name="LockLayerTwo" class="lock-layer lock-layer-two" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
-                <ui:VisualElement name="WallsButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: none;">
+                <ui:VisualElement name="WallsButtonsBackground" class="class-background-container" style="flex-grow: 1; position: absolute; width: 100%; height: 80%; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; flex-direction: row; justify-content: space-between; display: flex;">
                     <ui:VisualElement name="BuildingButtonsContainer" style="flex-grow: 1; flex-direction: row; width: 100%; height: 100%; justify-content: space-between;">
                         <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1;">
-                            <ui:Button text="BRICK WALL" parse-escape-sequences="true" display-tooltip-when-elided="true" name="BrickWallButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="BrickWallButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/BrickWallMossIcon&apos;); position: absolute;" />
+                            </ui:Button>
+                            <ui:Label tabindex="-1" text="30" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-align: lower-left; position: absolute;" />
                         </ui:VisualElement>
-                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%;">
-                            <ui:Button text="GARDEN FENCE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GardenFenceButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
-                            <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
-                        </ui:VisualElement>
-                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; right: 0;">
-                            <ui:Button text="IRON FENCE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="IronFenceButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;" />
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; left: 35%; display: none;">
+                            <ui:Button text="GARDEN FENCE" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GardenFenceButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/FenceIcon&apos;); position: absolute;" />
+                            </ui:Button>
                             <ui:VisualElement name="LockLayerTwo" class="lock-layer lock-layer-two" />
+                        </ui:VisualElement>
+                        <ui:VisualElement name="BuildingContainer" class="building-item" style="flex-grow: 1; display: flex; left: 35%;">
+                            <ui:Button parse-escape-sequences="true" display-tooltip-when-elided="true" name="IronFenceButton" class="building-button" style="-unity-text-align: lower-center; color: rgb(255, 255, 255); font-size: 18px;">
+                                <ui:VisualElement style="flex-grow: 1; width: 960px; height: 640px; background-image: resource(&apos;Icons/FenceIcon&apos;); position: absolute;" />
+                            </ui:Button>
+                            <ui:Label tabindex="-1" text="60" parse-escape-sequences="true" display-tooltip-when-elided="true" style="font-size: 40px; -unity-font-style: bold; color: rgb(255, 255, 255); -unity-text-outline-width: 1px; -unity-text-outline-color: rgb(0, 0, 0); -unity-text-align: lower-left; position: absolute;" />
+                            <ui:VisualElement name="LockLayerOne" class="lock-layer lock-layer-one" />
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
