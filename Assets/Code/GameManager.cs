@@ -64,10 +64,12 @@ public class GameManager : MonoBehaviour
         if(dayCounter == 1)
         {
             Instantiate(transition1, transitionSpawnPoint);
+            dayUI.GetComponent<DayUI>().dayOne = true;
         }
         if (dayCounter == 2)
         {
             Instantiate(transition2, transitionSpawnPoint);
+            dayUI.GetComponent<DayUI>().dayTwo = true;
         }
         if (dayCounter == 3)
         {
