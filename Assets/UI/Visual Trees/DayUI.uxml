@@ -1,7 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI/Style%20Sheets/DayUI.uss?fileID=7433441132597879392&amp;guid=102fbea5e388f40b1970b3d35f596321&amp;type=3#DayUI" />
-    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/References/Punkjam.png?fileID=2800000&amp;guid=595474fee35f04289b5110ebc911c168&amp;type=3#Punkjam&apos;); -unity-background-image-tint-color: rgba(255, 255, 255, 0);">
-        <ui:VisualElement style="flex-grow: 1;" />
+    <ui:VisualElement style="flex-grow: 1; background-image: url(&apos;project://database/Assets/UI/References/Punkjam.png?fileID=2800000&amp;guid=595474fee35f04289b5110ebc911c168&amp;type=3#Punkjam&apos;); -unity-background-image-tint-color: rgb(255, 255, 255);">
+        <ui:VisualElement style="flex-grow: 1; position: absolute; width: 100%; height: 12%;">
+            <ui:VisualElement style="flex-grow: 1;">
+                <ui:VisualElement name="ClockImageContainer" class="clock-image-container" style="flex-grow: 1; position: absolute; background-image: none;" />
+            </ui:VisualElement>
+        </ui:VisualElement>
         <ui:VisualElement style="flex-grow: 1;" />
         <ui:VisualElement style="flex-grow: 1; height: 19.3%; position: absolute; width: 100%; bottom: 0; align-items: center;">
             <ui:VisualElement style="flex-grow: 1; width: 36.5%;">

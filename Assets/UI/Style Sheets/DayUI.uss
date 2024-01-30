@@ -46,3 +46,10 @@
 
 .lock-layer-two {
 }
+
+.clock-image-container {
+    width: 960px;
+    height: 640px;
+    right: -368px;
+    top: -194px;
+}

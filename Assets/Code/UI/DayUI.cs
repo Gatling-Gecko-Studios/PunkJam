@@ -34,6 +34,12 @@ public class DayUI : MonoBehaviour
     public bool dayOne;
     public bool dayTwo;
 
+    [Header("Hour")]
+    public int hour;
+
+    [Header("Clock Containers")]
+    public VisualElement clockImageContainer;
+
     private void Awake()
     {
         root = GetComponent<UIDocument>().rootVisualElement;
@@ -53,6 +59,7 @@ public class DayUI : MonoBehaviour
         gravesButtonsBackground = root.Q<VisualElement>("GravesButtonsBackground");
         decorationsButtonsBackground = root.Q<VisualElement>("DecorationsButtonsBackground");
         wallsButtonsBackground = root.Q<VisualElement>("WallsButtonsBackground");
+        clockImageContainer = root.Q<VisualElement>("ClockImageContainer");
     }
 
     // Start is called before the first frame update
@@ -77,6 +84,7 @@ public class DayUI : MonoBehaviour
     void Update()
     {
         CheckDay();
+        CheckHour();
     }
 
     private void OpenGraves()
@@ -173,6 +181,69 @@ public class DayUI : MonoBehaviour
             {
                 element.style.display = DisplayStyle.None;
             });
+        }
+    }
+
+    private void CheckHour()
+    {
+        if(hour == 1)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 2)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 3)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 4)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 5)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 6)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 7)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 8)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 9)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 10)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 11)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
+        }
+
+        if (hour == 12)
+        {
+            clockImageContainer.style.backgroundImage = Resources.Load<Texture2D>("Clock/" + hour + "white");
         }
     }
 }
