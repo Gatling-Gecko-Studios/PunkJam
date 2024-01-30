@@ -16,7 +16,12 @@ namespace Code.GridSystem
         [SerializeField] private TileBase whiteTile;
 
         public GameObject CryptPrefab;
-        public GameObject prefab2;
+        public GameObject CoffinPrefab;
+        public GameObject GraveStonePrefab;
+        public GameObject FountainPrefab;
+        public GameObject BushPrefab;
+        public GameObject IronFencePrefab;
+        public GameObject BrickWallPrefab;
 
         private PlaceableObject objectToPlace;
 
@@ -97,7 +102,7 @@ namespace Code.GridSystem
         {
             Vector3 position = SnapCoordinateToGrid(Vector3.zero);
 
-            GameObject obj = Instantiate(prefab, position, quaternion.identity);
+            GameObject obj = Instantiate(prefab, position, quaternion.identity, GameObject.FindGameObjectWithTag("GraveContainer").transform);
             objectToPlace = obj.GetComponent<PlaceableObject>();
             obj.AddComponent<ObjectDrag>();
         }

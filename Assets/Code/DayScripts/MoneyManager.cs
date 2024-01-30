@@ -11,7 +11,7 @@ public class MoneyManager : MonoBehaviour
     public float lowTierGraveEarnings;
     public float midTierGraveEarnings;
     public float highTierGraveEarnings;
-    private float currentMoney;
+    public static float currentMoney;
     private List<GameObject> LowTierGraves = new List<GameObject>();
     private List<GameObject> MidTierGraves = new List<GameObject>();
     private List<GameObject> HighTierGraves = new List<GameObject>();

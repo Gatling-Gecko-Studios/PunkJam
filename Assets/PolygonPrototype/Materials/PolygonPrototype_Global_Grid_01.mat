@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PolygonPrototype_Global_Grid_01
-  m_Shader: {fileID: 4800000, guid: 0335a1d8a6f92a5418f172da855570ad, type: 3}
-  m_Parent: {fileID: 0}
+  m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
+  m_Parent: {fileID: 2100000, guid: 679f9b94c2afeb449841be1efc371df7, type: 2}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -17,24 +17,18 @@ Material:
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
-  stringTagMap: {}
+  stringTagMap:
+    RenderType: Opaque
   disabledShaderPasses: []
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs:
-    - _Grid:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
+    m_TexEnvs: []
     m_Ints: []
-    m_Floats:
-    - _Falloff: 50
-    - _GridScale: 5
-    - _OverlayAmount: 1
-    - __dirty: 1
+    m_Floats: []
     m_Colors:
-    - _BaseColor: {r: 0.062283717, g: 0.8320726, b: 0.9411765, a: 0}
+    - _BaseColor: {r: 0.11974902, g: 0.3679245, b: 0.19416787, a: 0}
+    - _Color: {r: 0.11974899, g: 0.36792448, b: 0.19416782, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &8019061012918995932
 MonoBehaviour:
