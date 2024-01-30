@@ -1,0 +1,48 @@
+.building-class-button {
+    -unity-text-align: middle-center;
+    width: 33.3%;
+    background-color: rgb(101, 101, 101);
+    height: 100%;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.building-item {
+    width: 30%;
+    height: 100%;
+    background-color: rgb(204, 204, 204);
+    position: absolute;
+}
+
+.building-button {
+    height: 100%;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.lock-layer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.49);
+}
+
+.lock-layer-one {
+}
+
+.lock-layer-two {
+}
