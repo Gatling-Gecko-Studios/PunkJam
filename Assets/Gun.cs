@@ -15,6 +15,12 @@ public class Gun : MonoBehaviour
     private Shake shakeScript;
     private GameObject mainCamera;
 
+    private AudioSource mainAudioSource;
+    [SerializeField]
+    private AudioClip reloadAudioClip;
+    [SerializeField]
+    private AudioClip shotAudioClip;
+
     [Tooltip("how much the z axis gets moved back when shooting. -1 is quite a lot, -2 is maybe too much")]
     [SerializeField] float gunRecoilOffset;
     void Start()
@@ -24,6 +30,7 @@ public class Gun : MonoBehaviour
         playerInputActions = GameManager.Instance.playerInputActions;
         swayAndBob = FindObjectOfType<SwayAndBob>(); //assuming there is only 1 swayandbob script in the scene
         shakeScript = FindObjectOfType<Shake>();
+        mainAudioSource = gameObject.GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -62,6 +69,7 @@ public class Gun : MonoBehaviour
         RaycastShoot();
 
         //sound
+        mainAudioSource.PlayOneShot(shotAudioClip);
 
         //use ammo (1 of 2 shots)
         currentLoadedBullets -= 1;
@@ -105,6 +113,7 @@ public class Gun : MonoBehaviour
         float rotationSpeed = rotationAmount / rotationDuration;
 
         //TODO: play sound
+        mainAudioSource.PlayOneShot(reloadAudioClip);
 
         // Start rotating the weaponHolder around the random axis
         StartCoroutine(RotateOverTime(rotationDuration));

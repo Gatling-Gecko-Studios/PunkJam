@@ -31,6 +31,9 @@ public class SimpleEnemyScript : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    [SerializeField] private AudioClip deathClip;
+    private AudioSource audioSource;
+
     private RagdollStateController ragdollController;
 
     void Start()
@@ -43,6 +46,7 @@ public class SimpleEnemyScript : MonoBehaviour
         target = GameObject.FindGameObjectWithTag("Player");
         animator = GetComponent<Animator>();
         ragdollController = GetComponent<RagdollStateController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -137,6 +141,7 @@ public class SimpleEnemyScript : MonoBehaviour
     private void Die()
     {
         health = 0;
+        audioSource.PlayOneShot(deathClip);
         ragdollController.EnableRagdollAndApplyForce(Vector3.back, 10f);
         Debug.Log("Zombie died, LOL");
     }
