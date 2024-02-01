@@ -4218,7 +4218,7 @@ PrefabInstance:
     - target: {fileID: 1024258225080563627, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.37
+      value: -14.75
       objectReference: {fileID: 0}
     - target: {fileID: 1024258225080563627, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
@@ -4228,7 +4228,7 @@ PrefabInstance:
     - target: {fileID: 1024258225080563627, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -13.33
+      value: -15.8
       objectReference: {fileID: 0}
     - target: {fileID: 1024258225080563627, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
@@ -4302,7 +4302,11 @@ PrefabInstance:
       objectReference: {fileID: 1636179851}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1024258225080563627, guid: c47469508c4a12a4d898c08e9dde8b49,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1235713880}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c47469508c4a12a4d898c08e9dde8b49, type: 3}
 --- !u!4 &1083492231 stripped
@@ -4314,6 +4318,12 @@ Transform:
 --- !u!1 &1087015865 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1662080856157270265, guid: c47469508c4a12a4d898c08e9dde8b49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1077584191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1087015871 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1024258225080563627, guid: c47469508c4a12a4d898c08e9dde8b49,
     type: 3}
   m_PrefabInstance: {fileID: 1077584191}
   m_PrefabAsset: {fileID: 0}
@@ -4630,12 +4640,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235713879}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.36429325, y: -0.37491125, z: 0.14022464, w: -0.84087396}
-  m_LocalPosition: {x: -12.42, y: 15.83, z: -12.57}
-  m_LocalScale: {x: 8.06716, y: 8.06716, z: 8.06716}
+  m_LocalRotation: {x: -0.008322328, y: -0.026485562, z: 0.0003001094, w: -0.99961454}
+  m_LocalPosition: {x: 0.24074464, y: -0.051756904, z: 3.115944}
+  m_LocalScale: {x: 14.45572, y: 14.455722, z: 14.455724}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1087015871}
   m_LocalEulerAnglesHint: {x: 35.925, y: 74.781, z: 20.61}
 --- !u!4 &1265805843 stripped
 Transform:
@@ -16604,7 +16614,6 @@ SceneRoots:
   - {fileID: 1213147317}
   - {fileID: 622018026}
   - {fileID: 1879860968}
-  - {fileID: 1235713880}
   - {fileID: 1562745302}
   - {fileID: 118931917}
   - {fileID: 407156383}

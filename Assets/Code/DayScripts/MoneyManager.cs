@@ -60,14 +60,25 @@ public class MoneyManager : MonoBehaviour
         }
     }
 
-    public void AddMoney(float amount)
+    public void AddMoney(float amountToAdd)
     {
-        if(amount > 0)
+        UpdateGraveCount();
+        if (amountToAdd > 0)
         {
-            FindObjectOfType<PointTextManager>().GetComponent<PointTextManager>().PlayPopup(amount);
-            currentMoney += amount;
+            FindObjectOfType<PointTextManager>().GetComponent<PointTextManager>().PlayPopup(amountToAdd);
+            currentMoney += amountToAdd;
         }
-        
+    }
+
+    public void SubtractMoney(float amountToSubtract) 
+    { 
+        UpdateGraveCount();
+        if (amountToSubtract > 0)
+        {
+            FindObjectOfType<PointTextManager>().GetComponent<PointTextManager>().PlayPopup(-amountToSubtract);
+            currentMoney -= amountToSubtract;
+        }
+
     }
 
     private void CalculateMoneyGained()

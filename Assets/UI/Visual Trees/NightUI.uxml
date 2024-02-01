@@ -6,6 +6,6 @@
     </ui:VisualElement>
     <ui:VisualElement style="flex-grow: 1; position: absolute; bottom: 0; width: 31%; height: 10%; justify-content: flex-start; align-items: flex-start; flex-direction: column; font-size: 30px;">
         <ui:Label tabindex="-1" text="LMB - SHOOT" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-right: 10px; color: rgb(255, 255, 255);" />
-        <ui:Label tabindex="-1" text="R - REALOAD" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-right: 10px; color: rgb(255, 255, 255);" />
+        <ui:Label tabindex="-1" text="R - RELOAD" parse-escape-sequences="true" display-tooltip-when-elided="true" style="margin-right: 10px; color: rgb(255, 255, 255);" />
     </ui:VisualElement>
 </ui:UXML>

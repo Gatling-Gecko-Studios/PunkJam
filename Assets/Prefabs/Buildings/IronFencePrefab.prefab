@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2860365475498400624}
   - component: {fileID: 6810534540366773230}
   - component: {fileID: -3005820750109155262}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IronFencePrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 490b12f586ca8864ba9d5056dc56f9ff,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7020202285471059657}
   - component: {fileID: 2037300399096306716}
   - component: {fileID: 7562265104671174924}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CoffinPrefab
   m_TagString: Grave-Low
   m_Icon: {fileID: 0}
@@ -187,12 +187,12 @@ PrefabInstance:
     - target: {fileID: -5878270757558157344, guid: 7364a89b24f41fe449607f93adbb8555,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -5786639313493243511, guid: 7364a89b24f41fe449607f93adbb8555,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7364a89b24f41fe449607f93adbb8555,
         type: 3}
@@ -202,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 7364a89b24f41fe449607f93adbb8555,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

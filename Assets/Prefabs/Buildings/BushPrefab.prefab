@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4965763736821252282}
   - component: {fileID: 6482128996241294125}
   - component: {fileID: -3574520022412218722}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BushPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 4d66f79d95d47e94cbf97d98f64daad9,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2256135121278427499}
   - component: {fileID: 6128413266631274487}
   - component: {fileID: 261782410569722896}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CryptPrefab
   m_TagString: Grave-High
   m_Icon: {fileID: 0}
@@ -192,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 96d51dfca2a252f4095c45e1fe8aaa1e,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

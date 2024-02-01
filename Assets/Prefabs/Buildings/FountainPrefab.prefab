@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 878522537680046636}
   - component: {fileID: 9124386641678789758}
   - component: {fileID: 4557023935675066753}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FountainPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a5b4c39e2f238cf4c9c11a954d7955ca,
         type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

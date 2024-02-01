@@ -19,8 +19,20 @@ public class PointTextManager : MonoBehaviour
 
     public void PlayPopup(float amount)
     {
-        GameObject.FindObjectOfType<DayAudioManager>().PlayCoinIntervalSound();
-        GameObject popup = Instantiate(popupPrefab, transform.position, Quaternion.identity);
-        popup.GetComponent<PointTextScript>().SetText("+" +  amount.ToString());
+        if(amount > 0)
+        {
+            GameObject.FindObjectOfType<DayAudioManager>().PlayCoinIntervalSound();
+            GameObject popup = Instantiate(popupPrefab, transform.position, Quaternion.identity);
+            popup.GetComponent<PointTextScript>().SetText("+" + amount.ToString());
+            popup.GetComponent<TMPro.TextMeshPro>().color = Color.green;
+        }
+        if(amount < 0)
+        {
+            GameObject.FindObjectOfType<DayAudioManager>().PlayCoinIntervalSound();
+            GameObject popup = Instantiate(popupPrefab, transform.position, Quaternion.identity);
+            popup.GetComponent<PointTextScript>().SetText(amount.ToString());
+            popup.GetComponent<TMPro.TextMeshPro>().color = Color.red;
+        }
+
     }
 }

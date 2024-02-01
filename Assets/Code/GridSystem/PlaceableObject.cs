@@ -64,7 +64,7 @@ namespace Code.GridSystem
             Placed = true;
             _moneyManager.UpdateGraveCount();
             GameObject.FindObjectOfType<DayAudioManager>().PlayPlaceObjectSound();
-            MoneyManager.currentMoney -= cost;
+            _moneyManager.SubtractMoney(cost);
             //TODO: moneymanager - cost
         }
 
@@ -72,6 +72,7 @@ namespace Code.GridSystem
         {
             _moneyManager.AddMoney(cost);
             Destroy(gameObject);
+
         }
 
         private void OnMouseDown()
