@@ -4273,7 +4273,7 @@ PrefabInstance:
     - target: {fileID: 4302230027401891553, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
       propertyPath: sens
-      value: 0.3
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 4302230027401891553, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
