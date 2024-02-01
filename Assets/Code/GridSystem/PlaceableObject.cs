@@ -6,6 +6,7 @@ namespace Code.GridSystem
     public class PlaceableObject : MonoBehaviour
     {
         public bool Placed { get; private set; }
+        public float cost;
         public Vector3Int Size { get; private set; }
         private Vector3[] Vertices;
         private MoneyManager _moneyManager;
@@ -36,24 +37,46 @@ namespace Code.GridSystem
 
         public Vector3 GetStartPosition()
         {
+            GetColliderVertexPositionsLocal();
             return transform.TransformPoint(Vertices[0]);
         }
 
         private void Start()
         {
+            //Recalculate();
+            _moneyManager = FindObjectOfType<MoneyManager>();
+            GetComponent<Collider>().enabled = false;
+        }
+
+        public void Recalculate()
+        {
             GetColliderVertexPositionsLocal();
             CalculateSizeInCells();
-            _moneyManager = FindObjectOfType<MoneyManager>();
         }
 
         public virtual void Place()
         {
+            GetComponent<Collider>().enabled = true;
+            GetColliderVertexPositionsLocal();
+            CalculateSizeInCells();
             ObjectDrag drag = gameObject.GetComponent<ObjectDrag>();
             Destroy(drag);
             Placed = true;
             _moneyManager.UpdateGraveCount();
             GameObject.FindObjectOfType<DayAudioManager>().PlayPlaceObjectSound();
-            //doe dingen als placed
+            MoneyManager.currentMoney -= cost;
+            //TODO: moneymanager - cost
+        }
+
+        private void SellObject()
+        {
+            _moneyManager.AddMoney(cost);
+            Destroy(gameObject);
+        }
+
+        private void OnMouseDown()
+        {
+            SellObject();
         }
     }
 }

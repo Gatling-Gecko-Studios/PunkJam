@@ -69,6 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb14db4e5824eeb9e55cc6615772644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 30
 --- !u!114 &6128413266631274487
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,6 +188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crypt
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 96d51dfca2a252f4095c45e1fe8aaa1e,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

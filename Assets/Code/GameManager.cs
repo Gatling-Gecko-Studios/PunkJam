@@ -1,3 +1,4 @@
+using Code.GridSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime * 2;
+        timer += Time.deltaTime * 3.2f;
         TranslateTimeToHour();
     }
 
@@ -84,8 +85,9 @@ public class GameManager : MonoBehaviour
     private void TransitionToFPS()
     {
         mainCamera.GetComponent<CameraController>().ChangeToFPS();
-        
-        foreach(SpawnEnemyScript spawnScript in FindObjectsByType<SpawnEnemyScript>(FindObjectsSortMode.None))
+        FindObjectOfType<BuildingSystem>().CancelPlacement();
+
+        foreach (SpawnEnemyScript spawnScript in FindObjectsByType<SpawnEnemyScript>(FindObjectsSortMode.None))
         {
             Debug.Log("enabled a spawn script");
             spawnScript.enabled = true;

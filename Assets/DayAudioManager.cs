@@ -8,6 +8,7 @@ public class DayAudioManager : MonoBehaviour
     [SerializeField] private AudioClip coinIntervalClip;
     [SerializeField] private AudioClip placeObjectClip;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip errorClip;
 
     // Start is called before the first frame update
     void Start()
@@ -27,5 +28,10 @@ public class DayAudioManager : MonoBehaviour
     public void PlayPlaceObjectSound()
     {
         audioSource.PlayOneShot(placeObjectClip);
+    }
+
+    public void PlayPlaceErrorSound()
+    {
+        audioSource.PlayOneShot(errorClip);
     }
 }

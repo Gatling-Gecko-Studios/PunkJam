@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb14db4e5824eeb9e55cc6615772644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 60
 --- !u!65 &6810534540366773230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -174,6 +175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: muur
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 490b12f586ca8864ba9d5056dc56f9ff,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

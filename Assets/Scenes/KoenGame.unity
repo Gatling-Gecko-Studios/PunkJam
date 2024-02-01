@@ -787,6 +787,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6184527167758366431, guid: 2650b305c4eea0b468d39ede43fd3f0c,
+        type: 3}
+      propertyPath: errorClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9a1c5c224c1f4694e9025b8465d2335e, type: 3}
     - target: {fileID: 7910073783085950128, guid: 2650b305c4eea0b468d39ede43fd3f0c,
         type: 3}
       propertyPath: m_Name
@@ -1063,8 +1068,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173428061}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.13, y: 6.95, z: 11.74}
+  m_LocalRotation: {x: -0.12134379, y: 0.3253657, z: -0.3276902, w: 0.8786535}
+  m_LocalPosition: {x: -10.491, y: 5.525, z: 13.33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2517,6 +2522,11 @@ PrefabInstance:
       propertyPath: graveContainer
       value: 
       objectReference: {fileID: 1544253185}
+    - target: {fileID: 5613075492603953305, guid: 43fdb594bf5be944a902fb181399a1ea,
+        type: 3}
+      propertyPath: moneyTickTimer
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7361938954900136215, guid: 43fdb594bf5be944a902fb181399a1ea,
         type: 3}
       propertyPath: m_Name
@@ -4283,7 +4293,7 @@ PrefabInstance:
     - target: {fileID: 4656701308973195577, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
       propertyPath: orthographic size
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8925946764918631123, guid: c47469508c4a12a4d898c08e9dde8b49,
         type: 3}
@@ -4620,9 +4630,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235713879}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.36515093, y: -0.3697186, z: 0.13797547, w: -0.8431701}
-  m_LocalPosition: {x: -12.42, y: 15.23, z: -12.57}
-  m_LocalScale: {x: 7.211876, y: 7.211876, z: 7.211876}
+  m_LocalRotation: {x: -0.36429325, y: -0.37491125, z: 0.14022464, w: -0.84087396}
+  m_LocalPosition: {x: -12.42, y: 15.83, z: -12.57}
+  m_LocalScale: {x: 8.06716, y: 8.06716, z: 8.06716}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -9026,22 +9036,22 @@ PrefabInstance:
     - target: {fileID: 1583129400326433844, guid: 53e55bacc5b3b9447941787985966df5,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.a
-      value: 4.61523e-40
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 1583129400326433844, guid: 53e55bacc5b3b9447941787985966df5,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.b
-      value: 4.61523e-40
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 1583129400326433844, guid: 53e55bacc5b3b9447941787985966df5,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.g
-      value: 4.61523e-40
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 1583129400326433844, guid: 53e55bacc5b3b9447941787985966df5,
         type: 3}
       propertyPath: m_TileColorArray.Array.data[0].m_Data.r
-      value: 4.61523e-40
+      value: NaN
       objectReference: {fileID: 0}
     - target: {fileID: 1583129400326433844, guid: 53e55bacc5b3b9447941787985966df5,
         type: 3}

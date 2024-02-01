@@ -78,15 +78,15 @@ public class DayUI : MonoBehaviour
         decorationsClassButton.clicked += () => OpenDecorations();
         wallsClassButton.clicked += () => OpenWalls();
 
-        coffinButton.clicked += () => PlaceCoffin();
-        graveButton.clicked += () => PlaceGrave();
-        tombButton.clicked += () => PlaceTomb();
-        decOneButton.clicked += () => PlaceDecOne();
-        decTwoButton.clicked += () => PlaceDecTwo();
-        fountainButton.clicked += () => PlaceFountain();
-        brickWallButton.clicked += () => PlaceBrickWall();
-        gardenFenceButton.clicked += () => PlaceGardenFence();
-        ironFenceButton.clicked += () => PlaceIronFence();
+        coffinButton.clicked += () => InitCoffin();
+        graveButton.clicked += () => InitGrave();
+        tombButton.clicked += () => InitTomb();
+        decOneButton.clicked += () => InitDecOne();
+        decTwoButton.clicked += () => InitDecTwo();
+        fountainButton.clicked += () => InitFountain();
+        brickWallButton.clicked += () => InitBrickWall();
+        gardenFenceButton.clicked += () => InitGardenFence();
+        ironFenceButton.clicked += () => InitIronFence();
     }
 
     // Update is called once per frame
@@ -124,85 +124,53 @@ public class DayUI : MonoBehaviour
         wallsButtonsBackground.style.display = DisplayStyle.Flex;
     }
 
-    private void PlaceCoffin()
+    private void InitCoffin()
     {
-        Debug.Log("Place Coffin");
-        
-        if (MoneyManager.currentMoney >= 10)
-        {
-            MoneyManager.currentMoney -= 10;
-            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.CoffinPrefab);
-        }
+        Debug.Log("init coffin");
+        BuildingSystem.current.HoldPlaceableObject(BuildingSystem.current.CoffinPrefab);
     }
 
-    private void PlaceGrave()
+    private void InitGrave()
     {
-        Debug.Log("Place Grave");
-        if (MoneyManager.currentMoney >= 20)
-        {
-            MoneyManager.currentMoney -= 20;
-            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.GraveStonePrefab);
-        }
+        BuildingSystem.current.HoldPlaceableObject(BuildingSystem.current.GraveStonePrefab);
+
     }
 
-    private void PlaceTomb()
+    private void InitTomb()
     {
-        Debug.Log("Place Tomb");
-        if (MoneyManager.currentMoney >= 30)
-        {
-            MoneyManager.currentMoney -= 30;
-            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.CryptPrefab);
-        }
+        BuildingSystem.current.HoldPlaceableObject(BuildingSystem.current.CryptPrefab);
     }
 
-    private void PlaceDecOne()
+    private void InitDecOne()
     {
-        Debug.Log("Place Decoration One");
-        if (MoneyManager.currentMoney >= 5)
-        {
-            MoneyManager.currentMoney -= 5;
-            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.BushPrefab);
-        }
+        BuildingSystem.current.HoldPlaceableObject(BuildingSystem.current.BushPrefab);
     }
 
-    private void PlaceDecTwo()
+    private void InitDecTwo()
     {
-        Debug.Log("Place Decoration Two");
+        Debug.Log("Place DecorationTwo");
     }
 
-    private void PlaceFountain()
+    private void InitFountain()
     {
-        Debug.Log("Place Fountain");
-        if (MoneyManager.currentMoney >= 25)
-        {
-            MoneyManager.currentMoney -= 25;
-            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.FountainPrefab);
-        }
+        BuildingSystem.current.HoldPlaceableObject(BuildingSystem.current.FountainPrefab);
     }
 
-    private void PlaceBrickWall()
+    private void InitBrickWall()
     {
-        Debug.Log("Place Brick Wall");
-        if (MoneyManager.currentMoney >= 30)
-        {
-            MoneyManager.currentMoney -= 30;
-            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.BrickWallPrefab);
-        }
+        BuildingSystem.current.HoldPlaceableObject(BuildingSystem.current.BrickWallPrefab);
+
     }
 
-    private void PlaceGardenFence()
+    private void InitGardenFence()
     {
         Debug.Log("Place Garden Fence");
     }
 
-    private void PlaceIronFence()
+    private void InitIronFence()
     {
-        Debug.Log("Place Iron Fence");
-        if (MoneyManager.currentMoney >= 60)
-        {
-            MoneyManager.currentMoney -= 60;
-            BuildingSystem.current.InitialiseWithObject(BuildingSystem.current.IronFencePrefab);
-        }
+        BuildingSystem.current.HoldPlaceableObject(BuildingSystem.current.IronFencePrefab);
+
     }
 
     private void CheckDay()

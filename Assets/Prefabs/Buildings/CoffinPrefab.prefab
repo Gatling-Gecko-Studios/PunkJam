@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb14db4e5824eeb9e55cc6615772644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 10
 --- !u!114 &7020202285471059657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_Area: 0
   m_OverrideGenerateLinks: 0
   m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
+  m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
 --- !u!114 &2037300399096306716
@@ -103,8 +104,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.57877195, y: 0.24133101, z: 0.33996266}
-  m_Center: {x: 0.008992076, y: 0.050899968, z: 0.014321804}
+  m_Size: {x: 0.59, y: 0.21, z: 0.15}
+  m_Center: {x: 0.008992076, y: 0.05089997, z: 0.014321804}
 --- !u!1001 &4779590887765530216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,10 +184,25 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -5878270757558157344, guid: 7364a89b24f41fe449607f93adbb8555,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5786639313493243511, guid: 7364a89b24f41fe449607f93adbb8555,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7364a89b24f41fe449607f93adbb8555,
         type: 3}
       propertyPath: m_Name
       value: Coffin
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7364a89b24f41fe449607f93adbb8555,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

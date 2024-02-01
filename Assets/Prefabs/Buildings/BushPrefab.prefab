@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb14db4e5824eeb9e55cc6615772644, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cost: 5
 --- !u!65 &6482128996241294125
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -84,7 +85,7 @@ MonoBehaviour:
   m_Area: 0
   m_OverrideGenerateLinks: 0
   m_GenerateLinks: 0
-  m_IgnoreFromBuild: 1
+  m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
 --- !u!1001 &7039088307430167316
@@ -174,6 +175,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: struikje
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d66f79d95d47e94cbf97d98f64daad9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

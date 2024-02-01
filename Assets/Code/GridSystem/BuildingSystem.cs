@@ -22,8 +22,10 @@ namespace Code.GridSystem
         public GameObject BushPrefab;
         public GameObject IronFencePrefab;
         public GameObject BrickWallPrefab;
+        public GameObject currentDraggedObject;
 
         private PlaceableObject objectToPlace;
+        private float rotationOffset;
 
         #region Unity Methods
 
@@ -38,20 +40,28 @@ namespace Code.GridSystem
             if (!objectToPlace) return;
             if (Input.GetKeyDown(KeyCode.Space))
             {
+
                 if (CanBePlaced(objectToPlace))
                 {
-                    objectToPlace.Place();
+                    objectToPlace.Recalculate();
                     Vector3Int start = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
                     TakeArea(start, objectToPlace.Size);
+                    PlaceCurrentObject();
                 }
                 else
                 {
-                    Destroy(objectToPlace.gameObject);
+                    CancelPlacement();
                 }
             }
             else if(Input.GetKeyDown(KeyCode.Escape))
             {
                 Destroy(objectToPlace.gameObject);
+            }
+            else if(Input.GetKeyDown(KeyCode.R))
+            {
+                rotationOffset += 90f;
+                currentDraggedObject.gameObject.transform.rotation = Quaternion.identity;
+                currentDraggedObject.gameObject.transform.Rotate(0, rotationOffset, 0);
             }
         }
 
@@ -62,7 +72,7 @@ namespace Code.GridSystem
         public static Vector3 GetMouseWorldPosition()
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit raycastHit))
+            if (Physics.Raycast(ray, out RaycastHit raycastHit, 10000f, LayerMask.GetMask("Default")))
             {
                 return raycastHit.point;
             }
@@ -98,17 +108,40 @@ namespace Code.GridSystem
 
         #region Building Placement
 
-        public void InitialiseWithObject(GameObject prefab)
+        public void PlaceCurrentObject()
         {
-            Vector3 position = SnapCoordinateToGrid(Vector3.zero);
+            currentDraggedObject.GetComponent<PlaceableObject>().Place();
+            currentDraggedObject = null;
+        }
 
-            GameObject obj = Instantiate(prefab, position, quaternion.identity, GameObject.FindGameObjectWithTag("GraveContainer").transform);
+        public void CancelPlacement()
+        {
+            Destroy(objectToPlace.gameObject);
+            currentDraggedObject = null;
+        }
+
+        public void HoldPlaceableObject(GameObject prefab)
+        {
+            //Vector3 position = SnapCoordinateToGrid(Vector3.zero);
+            GameObject obj = Instantiate(prefab, GetMouseWorldPosition(), quaternion.identity, GameObject.FindGameObjectWithTag("GraveContainer").transform);
             objectToPlace = obj.GetComponent<PlaceableObject>();
             obj.AddComponent<ObjectDrag>();
+            Destroy(currentDraggedObject);
+            currentDraggedObject = obj;
+            currentDraggedObject.gameObject.transform.rotation = Quaternion.identity;
+            currentDraggedObject.gameObject.transform.Rotate(0, rotationOffset, 0);
         }
 
         private bool CanBePlaced(PlaceableObject placeableObject)
         {
+            if (placeableObject.cost > MoneyManager.currentMoney)
+            {
+                Debug.Log("Not enough money.");
+                PlayErrorSound();
+                return false;
+            }
+            return true; //didnt want to deal with buggy cell calcs;
+
             BoundsInt area = new BoundsInt();
             area.position = gridLayout.WorldToCell(objectToPlace.GetStartPosition());
             area.size = placeableObject.Size;
@@ -116,10 +149,20 @@ namespace Code.GridSystem
             TileBase[] baseArray = GetTilesBlock(area, MainTilemap);
             foreach (var b in baseArray)
             {
-                if (b == whiteTile) return false;
+                if (b == whiteTile)
+                {
+                    Debug.Log("cannot be placed here.");
+                    PlayErrorSound();
+                    return false;
+                }  
             }
 
             return true;
+        }
+
+        private void PlayErrorSound()
+        {
+            FindObjectOfType<DayAudioManager>().PlayPlaceErrorSound();
         }
 
         public void TakeArea(Vector3Int start, Vector3Int size)
