@@ -97,7 +97,11 @@ public class GameManager : MonoBehaviour
     private IEnumerator TransitionInSeconds(float seconds)
     {
         Destroy(FindObjectOfType<MoneyManager>().gameObject);
-        Destroy(FindAnyObjectByType<FarmSimBackgroundManager>().gameObject);
+
+        if(FindAnyObjectByType<FarmSimBackgroundManager>() != null)
+        {
+            Destroy(FindAnyObjectByType<FarmSimBackgroundManager>().gameObject);
+        }
         Instantiate(FPSMusicManager);
         yield return new WaitForSeconds(seconds);
         TransitionToFPS();

@@ -1,7 +1,9 @@
 using Code.Scripts.Player;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Gun : MonoBehaviour
 {
@@ -100,15 +102,41 @@ public class Gun : MonoBehaviour
 
     private void RaycastShoot()
     {
-        if(Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit hit, 300f, hittableLayers))
+        RaycastHit[] hits = Physics.RaycastAll(mainCamera.transform.position, mainCamera.transform.forward, 300f, hittableLayers);
+
+        // Sort hits based on distance from camera to hit points
+        Array.Sort(hits, (x, y) => Vector3.Distance(mainCamera.transform.position, x.point).CompareTo(Vector3.Distance(mainCamera.transform.position, y.point)));
+
+        for (int i = 0; i < hits.Length; i++)
         {
+            RaycastHit hit = hits[i];
             Debug.DrawLine(mainCamera.transform.position, hit.point, Color.green, 2f);
-            if(hit.collider.gameObject.TryGetComponent(out SimpleEnemyScript enemyScript))
+
+            if (hit.collider.gameObject.TryGetComponent(out SimpleEnemyScript enemyScript))
             {
+                // Calculate damage based on hit order or any other logic
+                float adjustedDamage = CalculateAdjustedDamage(i);
+
                 Debug.Log("Deal damage");
-                enemyScript.TakeDamage(shotDamage, mainCamera.transform.forward);
+                enemyScript.TakeDamage(adjustedDamage, mainCamera.transform.forward);
             }
         }
+    }
+
+    private float CalculateAdjustedDamage(int hitIndex)
+    {
+        // You can implement any logic to vary the damage based on the hit order or other factors
+        float baseDamage = shotDamage;
+
+        if(hitIndex > 4)
+        {
+            return baseDamage / (hitIndex);
+        }
+        else
+        {
+            return baseDamage;
+        }
+
     }
 
     private void Reload()

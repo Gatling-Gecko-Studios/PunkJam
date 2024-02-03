@@ -117,7 +117,10 @@ namespace Code.GridSystem
 
         public void CancelPlacement()
         {
-            Destroy(objectToPlace.gameObject);
+            if(objectToPlace != null)
+            {
+                Destroy(objectToPlace.gameObject);
+            }
             objectToPlace = null;
             currentDraggedObject = null;
         }

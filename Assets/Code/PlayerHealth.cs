@@ -31,6 +31,6 @@ public class PlayerHealth : MonoBehaviour
     {
         health = 0;
         Debug.Log("Player died, LOL");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }

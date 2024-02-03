@@ -10,6 +10,7 @@ namespace Code.GridSystem
         public Vector3Int Size { get; private set; }
         private Vector3[] Vertices;
         private MoneyManager _moneyManager;
+        private BuildingSystem _buildingSystem;
 
         private void GetColliderVertexPositionsLocal()
         {
@@ -45,6 +46,7 @@ namespace Code.GridSystem
         {
             //Recalculate();
             _moneyManager = FindObjectOfType<MoneyManager>();
+            _buildingSystem = FindObjectOfType<BuildingSystem>();
             GetComponent<Collider>().enabled = false;
         }
 
@@ -77,7 +79,7 @@ namespace Code.GridSystem
 
         private void OnMouseDown()
         {
-            if(Placed)
+            if(Placed && _buildingSystem.currentDraggedObject == null && !GameManager.Instance.GetFPSMode())
             {
                 SellObject();
             }

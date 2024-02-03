@@ -22,7 +22,7 @@ public class SimpleEnemyScript : MonoBehaviour
     public float movementSpeed;
 
     [Header("CoolTastic Values")]
-    public int health;
+    public float health;
     public int damage;
     public float attackRange;
     public float attackCooldown;
@@ -127,7 +127,7 @@ public class SimpleEnemyScript : MonoBehaviour
         canAttack = true;
     }
 
-    public void TakeDamage(int damage, Vector3 direction)
+    public void TakeDamage(float damage, Vector3 direction)
     {
         if (health - damage <= 0)
         {
