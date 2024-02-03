@@ -1,3 +1,4 @@
+using Code.GridSystem;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -45,6 +46,7 @@ public class MoneyManager : MonoBehaviour
 
         foreach(Transform grave in graveContainer.transform)
         {
+            if (!grave.GetComponent<PlaceableObject>().Placed) { return; }
             if(grave.tag == "Grave-Low")
             {
                 LowTierGraves.Add(grave.gameObject);

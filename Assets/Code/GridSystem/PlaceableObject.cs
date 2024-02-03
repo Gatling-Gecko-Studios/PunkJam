@@ -77,7 +77,10 @@ namespace Code.GridSystem
 
         private void OnMouseDown()
         {
-            SellObject();
+            if(Placed)
+            {
+                SellObject();
+            }
         }
     }
 }

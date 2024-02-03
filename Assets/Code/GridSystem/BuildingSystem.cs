@@ -38,7 +38,7 @@ namespace Code.GridSystem
         private void Update()
         {
             if (!objectToPlace) return;
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
 
                 if (CanBePlaced(objectToPlace))
@@ -112,11 +112,13 @@ namespace Code.GridSystem
         {
             currentDraggedObject.GetComponent<PlaceableObject>().Place();
             currentDraggedObject = null;
+            objectToPlace = null;
         }
 
         public void CancelPlacement()
         {
             Destroy(objectToPlace.gameObject);
+            objectToPlace = null;
             currentDraggedObject = null;
         }
 

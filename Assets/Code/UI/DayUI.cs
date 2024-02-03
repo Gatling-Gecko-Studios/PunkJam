@@ -75,18 +75,42 @@ public class DayUI : MonoBehaviour
     void Start()
     {
         gravesClassButton.clicked += () => OpenGraves();
+        gravesClassButton.focusable = false;
+
         decorationsClassButton.clicked += () => OpenDecorations();
+        decorationsClassButton.focusable = false;
+
         wallsClassButton.clicked += () => OpenWalls();
+        wallsClassButton.focusable = false;
 
         coffinButton.clicked += () => InitCoffin();
+        coffinButton.focusable = false;
+
         graveButton.clicked += () => InitGrave();
+        graveButton.focusable = false;
+
         tombButton.clicked += () => InitTomb();
+        tombButton.focusable = false;
+
         decOneButton.clicked += () => InitDecOne();
+        decOneButton.focusable = false;
+
         decTwoButton.clicked += () => InitDecTwo();
+        decTwoButton.focusable = false;
+
         fountainButton.clicked += () => InitFountain();
+        fountainButton.focusable = false;
+
         brickWallButton.clicked += () => InitBrickWall();
+        brickWallButton.focusable = false;
+
         gardenFenceButton.clicked += () => InitGardenFence();
+        gardenFenceButton.focusable = false;
+
         ironFenceButton.clicked += () => InitIronFence();
+        ironFenceButton.focusable = false;
+
+
     }
 
     // Update is called once per frame
