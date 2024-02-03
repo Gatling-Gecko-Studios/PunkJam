@@ -54,6 +54,12 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dayCounter > 2)
+        {
+            timer = 179;
+            return;
+        }
+
         timer += Time.deltaTime * 3.2f;
         TranslateTimeToHour();
     }
@@ -91,6 +97,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("enabled a spawn script");
             spawnScript.enabled = true;
+            spawnScript.MaybeSpawnEnemyNow(); //1 in 3 chance to immediately spawn enemy;
         }
     }
 

@@ -80,4 +80,13 @@ public class SpawnEnemyScript : MonoBehaviour
 
         spawnOnCD = false;
     }
+
+    public void MaybeSpawnEnemyNow()
+    {
+        int randomInt = Random.Range(1, 4);
+        if(randomInt == 2)
+        {
+            Instantiate(enemyPrefabs[0], transform.position, new Quaternion());
+        }
+    }
 }
